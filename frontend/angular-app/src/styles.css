@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  color-scheme: light;
+
+  --color-bg: #f3f5f9;
+  --color-surface: #ffffff;
+  --color-border: #e3e7ee;
+  --color-border-strong: #cbd2df;
+
+  --color-text: #1a2033;
+  --color-text-muted: #5c6579;
+  --color-text-subtle: #8891a3;
+
+  --color-primary: #1d4ed8;
+  --color-primary-hover: #1642b3;
+  --color-primary-soft: #eaf0fe;
+
+  --color-success: #157a4a;
+  --color-success-soft: #e5f6ee;
+  --color-warn: #b45309;
+  --color-warn-soft: #fdf1e2;
+  --color-danger: #b42318;
+  --color-danger-soft: #fdeceb;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.08);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

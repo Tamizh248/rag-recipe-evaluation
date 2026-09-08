@@ -1,0 +1,70 @@
+{
+  "checks": [
+    {
+      "question_id": "Q1",
+      "chunk_id": "sourdough_country_2kg_structure_aware_ingredients_001",
+      "exists": true,
+      "recipe_id": "sourdough_country_2kg",
+      "matches_expected_recipe": true,
+      "overlap_keywords": [
+        "fine",
+        "salt",
+        "sea"
+      ],
+      "supports_answer": true,
+      "valid": true
+    },
+    {
+      "question_id": "Q5",
+      "chunk_id": "sourdough_country_2kg_structure_aware_method_002",
+      "exists": true,
+      "recipe_id": "sourdough_country_2kg",
+      "matches_expected_recipe": true,
+      "overlap_keywords": [
+        "bake",
+        "browned",
+        "cold",
+        "covered",
+        "deeply",
+        "dutch",
+        "further",
+        "minutes",
+        "oven",
+        "preheat",
+        "score",
+        "then",
+        "uncovered",
+        "until"
+      ],
+      "supports_answer": true,
+      "valid": true
+    },
+    {
+      "question_id": "Q7",
+      "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_allergens_003",
+      "exists": true,
+      "recipe_id": "cinnamon_raisin_walnut_800g",
+      "matches_expected_recipe": true,
+      "overlap_keywords": [
+        "contains",
+        "dairy",
+        "egg",
+        "gluten",
+        "nuts",
+        "tree",
+        "walnuts"
+      ],
+      "supports_answer": true,
+      "valid": true
+    },
+    {
+      "question_id": "SYNTHETIC_NEGATIVE_CONTROL",
+      "chunk_id": "does_not_exist_chunk_999",
+      "exists": false,
+      "valid": false,
+      "reason": "chunk_id does not exist in the vector store"
+    }
+  ],
+  "all_real_citations_valid": true,
+  "negative_control_correctly_rejected": true
+}

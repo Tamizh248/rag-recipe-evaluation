@@ -1,0 +1,86 @@
+{
+  "note": "These 8 questions were authored directly from the 6 source recipe cards in backend/data/recipes/, before any chunking, embedding, or retrieval code was run. They must not be edited based on retrieval results (Rule 2 in the project brief).",
+  "retrieval_questions": [
+    {
+      "id": "Q1",
+      "type": "ingredient",
+      "question": "How much salt, in grams, is used in the Sourdough Country Loaf recipe?",
+      "expected_answer": "20g (2% baker's percentage)",
+      "expected_recipe_id": "sourdough_country_2kg",
+      "expected_section": "ingredients"
+    },
+    {
+      "id": "Q2",
+      "type": "ingredient",
+      "question": "What is the baker's percentage of walnuts in the Cinnamon Raisin Walnut Sourdough?",
+      "expected_answer": "15%",
+      "expected_recipe_id": "cinnamon_raisin_walnut_800g",
+      "expected_section": "ingredients"
+    },
+    {
+      "id": "Q3",
+      "type": "ingredient",
+      "question": "How much active sourdough starter, in grams, is used in the Rosemary Olive Focaccia recipe?",
+      "expected_answer": "160g (20% baker's percentage)",
+      "expected_recipe_id": "rosemary_olive_focaccia_1500g",
+      "expected_section": "ingredients"
+    },
+    {
+      "id": "Q4",
+      "type": "method",
+      "question": "How long should the Sourdough Brioche dough bulk retard in the refrigerator before shaping?",
+      "expected_answer": "Overnight, 10 to 12 hours",
+      "expected_recipe_id": "brioche_sourdough_900g",
+      "expected_section": "method"
+    },
+    {
+      "id": "Q5",
+      "type": "method",
+      "question": "What vessel is used to bake the Sourdough Country Loaf?",
+      "expected_answer": "A covered Dutch oven",
+      "expected_recipe_id": "sourdough_country_2kg",
+      "expected_section": "method"
+    },
+    {
+      "id": "Q6",
+      "type": "method",
+      "question": "When during the process should salt be added to the Caraway Rye Sourdough dough?",
+      "expected_answer": "After the 30-minute autolyse of the flour and water, before mixing in the starter and caraway seeds",
+      "expected_recipe_id": "rye_sourdough_900g",
+      "expected_section": "method"
+    },
+    {
+      "id": "Q7",
+      "type": "allergen",
+      "question": "Which recipe contains tree nuts, and which nut is it?",
+      "expected_answer": "Cinnamon Raisin Walnut Sourdough contains walnuts (tree nuts)",
+      "expected_recipe_id": "cinnamon_raisin_walnut_800g",
+      "expected_section": "allergens"
+    },
+    {
+      "id": "Q8",
+      "type": "other",
+      "question": "How much total dough yield does the Whole Wheat Flaxseed Sourdough recipe produce?",
+      "expected_answer": "Approximately 2080g of dough, enough for two 900g boules (about 1.8kg total)",
+      "expected_recipe_id": "whole_wheat_flaxseed_1800g",
+      "expected_section": "title"
+    }
+  ],
+  "unanswerable_questions": [
+    {
+      "id": "U1",
+      "question": "What is the protein content per serving of the Sourdough Country Loaf?",
+      "reason_unanswerable": "No recipe card contains nutritional information (protein, calories, sodium, etc.)."
+    },
+    {
+      "id": "U2",
+      "question": "How many calories are in one slice of the Whole Wheat Flaxseed Sourdough?",
+      "reason_unanswerable": "No recipe card contains nutritional information."
+    },
+    {
+      "id": "U3",
+      "question": "What is the sodium content per serving of the Sourdough Brioche Loaf?",
+      "reason_unanswerable": "No recipe card contains nutritional information."
+    }
+  ]
+}

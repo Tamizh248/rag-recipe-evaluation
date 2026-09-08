@@ -1,0 +1,60 @@
+{
+  "provider": "local",
+  "model": "local-extractive (no API key)",
+  "strategy": "structure-aware",
+  "answerable": [
+    {
+      "id": "Q1",
+      "question": "How much salt, in grams, is used in the Sourdough Country Loaf recipe?",
+      "expected_recipe_id": "sourdough_country_2kg",
+      "answer": "Fine Sea Salt: 20g (2%)",
+      "refused": false,
+      "citations": [
+        "sourdough_country_2kg_structure_aware_ingredients_001"
+      ]
+    },
+    {
+      "id": "Q5",
+      "question": "What vessel is used to bake the Sourdough Country Loaf?",
+      "expected_recipe_id": "sourdough_country_2kg",
+      "answer": "7. Preheat a covered Dutch oven to 250C (480F). Score the cold loaf and bake covered for 20 minutes, then uncovered for a further 20-25 minutes until deeply browned.",
+      "refused": false,
+      "citations": [
+        "sourdough_country_2kg_structure_aware_method_002"
+      ]
+    },
+    {
+      "id": "Q7",
+      "question": "Which recipe contains tree nuts, and which nut is it?",
+      "expected_recipe_id": "cinnamon_raisin_walnut_800g",
+      "answer": "Contains gluten (wheat) and tree nuts (walnuts). Contains no dairy or egg.",
+      "refused": false,
+      "citations": [
+        "cinnamon_raisin_walnut_800g_structure_aware_allergens_003"
+      ]
+    }
+  ],
+  "unanswerable": [
+    {
+      "id": "U1",
+      "question": "What is the protein content per serving of the Sourdough Country Loaf?",
+      "answer": "I cannot answer this from the provided recipes.",
+      "refused": true,
+      "citations": []
+    },
+    {
+      "id": "U2",
+      "question": "How many calories are in one slice of the Whole Wheat Flaxseed Sourdough?",
+      "answer": "I cannot answer this from the provided recipes.",
+      "refused": true,
+      "citations": []
+    },
+    {
+      "id": "U3",
+      "question": "What is the sodium content per serving of the Sourdough Brioche Loaf?",
+      "answer": "I cannot answer this from the provided recipes.",
+      "refused": true,
+      "citations": []
+    }
+  ]
+}

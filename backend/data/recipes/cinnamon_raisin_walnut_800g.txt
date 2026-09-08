@@ -1,0 +1,32 @@
+---
+recipe_id: cinnamon_raisin_walnut_800g
+cuisine: bread
+dietary_tags: vegetarian, contains-nuts
+---
+RECIPE: Cinnamon Raisin Walnut Sourdough (800g)
+
+Yields approximately 1170g of dough, enough for one 800g pan loaf.
+
+INGREDIENTS:
+Ingredient | Weight | Baker's Percentage
+Bread Flour | 500g | 100%
+Water | 350g | 70%
+Fine Sea Salt | 10g | 2%
+Active Sourdough Starter | 100g | 20%
+Raisins | 100g | 20%
+Walnuts (chopped) | 75g | 15%
+Ground Cinnamon | 5g | 1%
+Honey | 30g | 6%
+
+METHOD:
+1. Mix the bread flour, water, and active sourdough starter into a shaggy dough and rest (autolyse) for 30 minutes.
+2. Add the fine sea salt and honey, and mix until the dough is smooth and moderately developed.
+3. Bulk ferment for 4 hours at room temperature with a stretch-and-fold every 45 minutes.
+4. During the second fold, laminate the dough out into a thin rectangle and scatter the raisins, chopped walnuts, and ground cinnamon evenly over the surface, then roll and fold the dough to distribute the mix-ins.
+5. Continue bulk fermentation until the dough is domed and airy, then shape into a batard and place in a floured banneton.
+6. Cold proof in the refrigerator for 10 to 12 hours.
+7. Bake in a preheated Dutch oven at 230C (450F), covered for 20 minutes and uncovered for 15-20 minutes until deep golden brown.
+8. Cool on a wire rack for at least 1 hour before slicing, as the caramelized honey and raisins retain heat.
+
+ALLERGENS:
+Contains gluten (wheat) and tree nuts (walnuts). Contains no dairy or egg.

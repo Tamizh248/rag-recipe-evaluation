@@ -1,0 +1,28 @@
+---
+recipe_id: rye_sourdough_900g
+cuisine: bread
+dietary_tags: vegan
+---
+RECIPE: Caraway Rye Sourdough (900g)
+
+Yields approximately 1075g of dough, enough for one 900g batard.
+
+INGREDIENTS:
+Ingredient | Weight | Baker's Percentage
+Dark Rye Flour | 500g | 100%
+Water | 400g | 80%
+Fine Sea Salt | 10g | 2%
+Active Rye Starter | 150g | 30%
+Caraway Seeds | 15g | 3%
+
+METHOD:
+1. Combine the dark rye flour and water and rest (autolyse) for 30 minutes.
+2. Add the fine sea salt after the autolyse, then mix in the active rye starter and caraway seeds until evenly distributed.
+3. Bulk ferment for 2.5 to 3 hours at room temperature. Rye dough ferments faster than wheat dough and needs only one gentle fold at the 45-minute mark.
+4. Once the dough has visibly loosened and domed, turn it out and shape gently into a batard, taking care not to degas it too much since rye doughs are stickier and less elastic.
+5. Proof seam-side up in a floured banneton for 45 to 60 minutes at room temperature.
+6. Preheat the oven with a baking stone to 230C (450F). Bake for 40-45 minutes until the crust is deep brown and the loaf sounds hollow when tapped.
+7. Cool completely, at least 2 hours, before slicing since rye crumb continues to set as it cools.
+
+ALLERGENS:
+Contains gluten (rye). Contains no dairy, egg, or tree nuts.

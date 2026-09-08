@@ -1,0 +1,634 @@
+{
+  "top_k": 5,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "questions": [
+    {
+      "id": "Q1",
+      "question": "How much salt, in grams, is used in the Sourdough Country Loaf recipe?",
+      "expected_recipe_id": "sourdough_country_2kg",
+      "expected_section": "ingredients",
+      "results": {
+        "current": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "sourdough_country_2kg_current_ingredients_000",
+              "score": 0.7829,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "brioche_sourdough_900g_current_ingredients_000",
+              "score": 0.6413,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_current_ingredients_001",
+              "score": 0.6284,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_current_method_001",
+              "score": 0.6272,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "method"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_current_ingredients_000",
+              "score": 0.6078,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "ingredients"
+            }
+          ]
+        },
+        "structure-aware": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "sourdough_country_2kg_structure_aware_ingredients_001",
+              "score": 0.7507,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_structure_aware_title_000",
+              "score": 0.7199,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "title"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_structure_aware_allergens_003",
+              "score": 0.6835,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "brioche_sourdough_900g_structure_aware_ingredients_001",
+              "score": 0.637,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "brioche_sourdough_900g_structure_aware_title_000",
+              "score": 0.6241,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "title"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What is the baker's percentage of walnuts in the Cinnamon Raisin Walnut Sourdough?",
+      "expected_recipe_id": "cinnamon_raisin_walnut_800g",
+      "expected_section": "ingredients",
+      "results": {
+        "current": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_current_ingredients_000",
+              "score": 0.7684,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_current_ingredients_001",
+              "score": 0.615,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_current_title_000",
+              "score": 0.4834,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "title"
+            },
+            {
+              "chunk_id": "brioche_sourdough_900g_current_ingredients_001",
+              "score": 0.4806,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_current_ingredients_000",
+              "score": 0.479,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "ingredients"
+            }
+          ]
+        },
+        "structure-aware": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_ingredients_001",
+              "score": 0.7742,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_title_000",
+              "score": 0.7422,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "title"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_allergens_003",
+              "score": 0.7126,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_method_002",
+              "score": 0.6029,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001",
+              "score": 0.5408,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "ingredients"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "How much active sourdough starter, in grams, is used in the Rosemary Olive Focaccia recipe?",
+      "expected_recipe_id": "rosemary_olive_focaccia_1500g",
+      "expected_section": "ingredients",
+      "results": {
+        "current": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_current_ingredients_000",
+              "score": 0.7517,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_current_ingredients_001",
+              "score": 0.6559,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_current_ingredients_001",
+              "score": 0.5991,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_current_method_002",
+              "score": 0.5705,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "brioche_sourdough_900g_current_ingredients_001",
+              "score": 0.5407,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "ingredients"
+            }
+          ]
+        },
+        "structure-aware": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_structure_aware_ingredients_001",
+              "score": 0.7131,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_structure_aware_allergens_003",
+              "score": 0.6201,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_structure_aware_title_000",
+              "score": 0.6171,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "title"
+            },
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_structure_aware_method_002",
+              "score": 0.6098,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001",
+              "score": 0.4885,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "ingredients"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "How long should the Sourdough Brioche dough bulk retard in the refrigerator before shaping?",
+      "expected_recipe_id": "brioche_sourdough_900g",
+      "expected_section": "method",
+      "results": {
+        "current": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "brioche_sourdough_900g_current_method_004",
+              "score": 0.6927,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_current_method_002",
+              "score": 0.621,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_current_method_002",
+              "score": 0.6132,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "method"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_current_method_002",
+              "score": 0.5881,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_current_method_002",
+              "score": 0.5758,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "method"
+            }
+          ]
+        },
+        "structure-aware": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "brioche_sourdough_900g_structure_aware_method_002",
+              "score": 0.6792,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_structure_aware_method_002",
+              "score": 0.6166,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "method"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_method_002",
+              "score": 0.6111,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "brioche_sourdough_900g_structure_aware_title_000",
+              "score": 0.5336,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "title"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_method_002",
+              "score": 0.5226,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "method"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Q5",
+      "question": "What vessel is used to bake the Sourdough Country Loaf?",
+      "expected_recipe_id": "sourdough_country_2kg",
+      "expected_section": "method",
+      "results": {
+        "current": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "sourdough_country_2kg_current_ingredients_000",
+              "score": 0.6161,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "brioche_sourdough_900g_current_ingredients_000",
+              "score": 0.5435,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "rye_sourdough_900g_current_method_004",
+              "score": 0.4802,
+              "recipe_id": "rye_sourdough_900g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_current_ingredients_001",
+              "score": 0.4585,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_current_method_004",
+              "score": 0.4424,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "method"
+            }
+          ]
+        },
+        "structure-aware": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "sourdough_country_2kg_structure_aware_allergens_003",
+              "score": 0.6192,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_structure_aware_title_000",
+              "score": 0.6182,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "title"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_structure_aware_method_002",
+              "score": 0.6125,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "method"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_structure_aware_ingredients_001",
+              "score": 0.6058,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "brioche_sourdough_900g_structure_aware_ingredients_001",
+              "score": 0.5587,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "ingredients"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Q6",
+      "question": "When during the process should salt be added to the Caraway Rye Sourdough dough?",
+      "expected_recipe_id": "rye_sourdough_900g",
+      "expected_section": "method",
+      "results": {
+        "current": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "sourdough_country_2kg_current_method_001",
+              "score": 0.6439,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "method"
+            },
+            {
+              "chunk_id": "rye_sourdough_900g_current_method_001",
+              "score": 0.6402,
+              "recipe_id": "rye_sourdough_900g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_current_method_002",
+              "score": 0.6053,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "method"
+            },
+            {
+              "chunk_id": "brioche_sourdough_900g_current_method_002",
+              "score": 0.5818,
+              "recipe_id": "brioche_sourdough_900g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "rye_sourdough_900g_current_ingredients_000",
+              "score": 0.5627,
+              "recipe_id": "rye_sourdough_900g",
+              "section": "ingredients"
+            }
+          ]
+        },
+        "structure-aware": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "rye_sourdough_900g_structure_aware_method_002",
+              "score": 0.6221,
+              "recipe_id": "rye_sourdough_900g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "rye_sourdough_900g_structure_aware_title_000",
+              "score": 0.5473,
+              "recipe_id": "rye_sourdough_900g",
+              "section": "title"
+            },
+            {
+              "chunk_id": "rye_sourdough_900g_structure_aware_allergens_003",
+              "score": 0.5419,
+              "recipe_id": "rye_sourdough_900g",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "rye_sourdough_900g_structure_aware_ingredients_001",
+              "score": 0.5405,
+              "recipe_id": "rye_sourdough_900g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_structure_aware_method_002",
+              "score": 0.46,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "method"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Q7",
+      "question": "Which recipe contains tree nuts, and which nut is it?",
+      "expected_recipe_id": "cinnamon_raisin_walnut_800g",
+      "expected_section": "allergens",
+      "results": {
+        "current": {
+          "hit": false,
+          "top_k": [
+            {
+              "chunk_id": "sourdough_country_2kg_current_allergens_006",
+              "score": 0.6986,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_current_allergens_006",
+              "score": 0.602,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_current_method_006",
+              "score": 0.5229,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_current_ingredients_000",
+              "score": 0.4974,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_current_method_005",
+              "score": 0.4936,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "method"
+            }
+          ]
+        },
+        "structure-aware": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_allergens_003",
+              "score": 0.6208,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_ingredients_001",
+              "score": 0.5643,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_allergens_003",
+              "score": 0.4953,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "rosemary_olive_focaccia_1500g_structure_aware_allergens_003",
+              "score": 0.4789,
+              "recipe_id": "rosemary_olive_focaccia_1500g",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_title_000",
+              "score": 0.471,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "title"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Q8",
+      "question": "How much total dough yield does the Whole Wheat Flaxseed Sourdough recipe produce?",
+      "expected_recipe_id": "whole_wheat_flaxseed_1800g",
+      "expected_section": "title",
+      "results": {
+        "current": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_current_title_000",
+              "score": 0.8392,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "title"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_current_ingredients_001",
+              "score": 0.616,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_current_ingredients_000",
+              "score": 0.5919,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "sourdough_country_2kg_current_ingredients_000",
+              "score": 0.5802,
+              "recipe_id": "sourdough_country_2kg",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "rye_sourdough_900g_current_ingredients_000",
+              "score": 0.5658,
+              "recipe_id": "rye_sourdough_900g",
+              "section": "ingredients"
+            }
+          ]
+        },
+        "structure-aware": {
+          "hit": true,
+          "top_k": [
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_title_000",
+              "score": 0.8463,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "title"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001",
+              "score": 0.7422,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "ingredients"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_allergens_003",
+              "score": 0.6807,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "allergens"
+            },
+            {
+              "chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_method_002",
+              "score": 0.6478,
+              "recipe_id": "whole_wheat_flaxseed_1800g",
+              "section": "method"
+            },
+            {
+              "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_title_000",
+              "score": 0.618,
+              "recipe_id": "cinnamon_raisin_walnut_800g",
+              "section": "title"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "hit_at_5": {
+    "current": "7/8",
+    "structure-aware": "8/8"
+  }
+}

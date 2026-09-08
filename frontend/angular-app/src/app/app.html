@@ -1,0 +1,106 @@
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">R</span>
+        <div class="brand-text">
+          <span class="brand-name">Recipe RAG</span>
+          <span class="brand-sub">Evaluation Console</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="card">
+      <h1 class="card-title">Ask a question</h1>
+      <p class="card-subtitle">Query the recipe knowledge base and inspect retrieval quality.</p>
+
+      <div class="field">
+        <label for="question">Question</label>
+        <textarea id="question" rows="3" class="textarea" [(ngModel)]="question"></textarea>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="strategy">Chunking strategy</label>
+          <select id="strategy" class="select" [(ngModel)]="strategy">
+            <option value="current">Current (baseline)</option>
+            <option value="structure-aware">Structure-aware</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="dietaryTag">Dietary tag filter</label>
+          <select id="dietaryTag" class="select" [(ngModel)]="dietaryTag">
+            @for (tag of dietaryTagOptions; track tag) {
+              <option [value]="tag">{{ tag || '(none)' }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" (click)="ask()" [disabled]="loading()">
+          @if (loading()) {
+            <span class="spinner" aria-hidden="true"></span>
+          }
+          {{ loading() ? 'Asking…' : 'Ask' }}
+        </button>
+      </div>
+
+      @if (error()) {
+        <div class="alert" role="alert">{{ error() }}</div>
+      }
+    </section>
+
+    @if (chatResponse(); as response) {
+      <section class="card">
+        <div class="result-header">
+          <h2 class="card-title">Answer</h2>
+          <span class="badge" [class.badge-warn]="response.refused" [class.badge-ok]="!response.refused">
+            {{ response.refused ? 'Refused' : 'Answered' }}
+          </span>
+        </div>
+
+        <p class="answer-text">{{ response.answer }}</p>
+
+        <div class="subsection">
+          <h3 class="section-title">Sources</h3>
+          @if (response.citations.length > 0) {
+            <ul class="chip-list">
+              @for (citation of response.citations; track citation.chunk_id) {
+                <li class="chip">{{ citation.chunk_id }}</li>
+              }
+            </ul>
+          } @else {
+            <p class="muted">No citations returned.</p>
+          }
+        </div>
+
+        <button class="btn btn-secondary" (click)="toggleChunks()">
+          {{ showChunks() ? 'Hide retrieved chunks' : 'Show retrieved chunks' }}
+        </button>
+
+        @if (showChunks()) {
+          <ul class="chunk-list">
+            @for (chunk of retrievedChunks(); track chunk.chunk_id) {
+              <li class="chunk-item">
+                <div class="chunk-meta">
+                  <span class="chunk-id">{{ chunk.chunk_id }}</span>
+                  <span class="chunk-score">score {{ chunk.score.toFixed(3) }}</span>
+                  <span class="chunk-section">{{ chunk.section }}</span>
+                </div>
+                <pre class="chunk-text">{{ chunk.text }}</pre>
+              </li>
+            }
+          </ul>
+        }
+      </section>
+    }
+  </main>
+
+  <footer class="page-footer">
+    <span>Recipe RAG Evaluation Console</span>
+  </footer>
+</div>

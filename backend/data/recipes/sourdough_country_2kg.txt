@@ -1,0 +1,28 @@
+---
+recipe_id: sourdough_country_2kg
+cuisine: bread
+dietary_tags: vegan
+---
+RECIPE: Sourdough Country Loaf (2kg)
+
+Yields approximately 1970g of dough, enough for two 1kg boules.
+
+INGREDIENTS:
+Ingredient | Weight | Baker's Percentage
+Bread Flour | 1000g | 100%
+Water | 750g | 75%
+Fine Sea Salt | 20g | 2%
+Active Sourdough Starter | 200g | 20%
+
+METHOD:
+1. Mix the bread flour and water until no dry flour remains, then rest (autolyse) for 45 minutes.
+2. Add the active sourdough starter and the fine sea salt. Mix thoroughly until fully incorporated.
+3. Bulk ferment for 4 to 5 hours at room temperature, performing a set of stretch-and-folds every 30 minutes for the first 2 hours.
+4. Once the dough has risen by about 50% and feels airy, divide it into two pieces and pre-shape each into a round.
+5. Rest the pre-shaped rounds for 20 minutes, then shape each firmly into a boule and place seam-side up in a floured banneton.
+6. Cold proof the shaped loaves in the refrigerator for 12 to 16 hours.
+7. Preheat a covered Dutch oven to 250C (480F). Score the cold loaf and bake covered for 20 minutes, then uncovered for a further 20-25 minutes until deeply browned.
+8. Cool on a wire rack for at least 1 hour before slicing.
+
+ALLERGENS:
+Contains gluten (wheat). Produced in a facility that also processes tree nuts. Contains no dairy, egg, or soy.

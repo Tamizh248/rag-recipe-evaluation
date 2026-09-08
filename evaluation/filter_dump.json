@@ -1,0 +1,127 @@
+{
+  "query": "Which bread pairs well with a cheese board?",
+  "strategy": "structure-aware",
+  "filter": {
+    "dietary_tags": [
+      "vegan"
+    ]
+  },
+  "unfiltered_top_5": [
+    {
+      "chunk_id": "brioche_sourdough_900g_structure_aware_ingredients_001",
+      "score": 0.4163,
+      "recipe_id": "brioche_sourdough_900g",
+      "section": "ingredients",
+      "dietary_tags": [
+        "vegetarian",
+        "contains-dairy",
+        "contains-eggs"
+      ]
+    },
+    {
+      "chunk_id": "brioche_sourdough_900g_structure_aware_allergens_003",
+      "score": 0.4145,
+      "recipe_id": "brioche_sourdough_900g",
+      "section": "allergens",
+      "dietary_tags": [
+        "vegetarian",
+        "contains-dairy",
+        "contains-eggs"
+      ]
+    },
+    {
+      "chunk_id": "sourdough_country_2kg_structure_aware_ingredients_001",
+      "score": 0.4022,
+      "recipe_id": "sourdough_country_2kg",
+      "section": "ingredients",
+      "dietary_tags": [
+        "vegan"
+      ]
+    },
+    {
+      "chunk_id": "sourdough_country_2kg_structure_aware_method_002",
+      "score": 0.3927,
+      "recipe_id": "sourdough_country_2kg",
+      "section": "method",
+      "dietary_tags": [
+        "vegan"
+      ]
+    },
+    {
+      "chunk_id": "sourdough_country_2kg_structure_aware_allergens_003",
+      "score": 0.3876,
+      "recipe_id": "sourdough_country_2kg",
+      "section": "allergens",
+      "dietary_tags": [
+        "vegan"
+      ]
+    }
+  ],
+  "filtered_top_5": [
+    {
+      "chunk_id": "sourdough_country_2kg_structure_aware_ingredients_001",
+      "score": 0.4022,
+      "recipe_id": "sourdough_country_2kg",
+      "section": "ingredients",
+      "dietary_tags": [
+        "vegan"
+      ]
+    },
+    {
+      "chunk_id": "sourdough_country_2kg_structure_aware_method_002",
+      "score": 0.3927,
+      "recipe_id": "sourdough_country_2kg",
+      "section": "method",
+      "dietary_tags": [
+        "vegan"
+      ]
+    },
+    {
+      "chunk_id": "sourdough_country_2kg_structure_aware_allergens_003",
+      "score": 0.3876,
+      "recipe_id": "sourdough_country_2kg",
+      "section": "allergens",
+      "dietary_tags": [
+        "vegan"
+      ]
+    },
+    {
+      "chunk_id": "sourdough_country_2kg_structure_aware_title_000",
+      "score": 0.3539,
+      "recipe_id": "sourdough_country_2kg",
+      "section": "title",
+      "dietary_tags": [
+        "vegan"
+      ]
+    },
+    {
+      "chunk_id": "rye_sourdough_900g_structure_aware_method_002",
+      "score": 0.331,
+      "recipe_id": "rye_sourdough_900g",
+      "section": "method",
+      "dietary_tags": [
+        "vegan"
+      ]
+    }
+  ],
+  "unfiltered_top_1": {
+    "chunk_id": "brioche_sourdough_900g_structure_aware_ingredients_001",
+    "score": 0.4163,
+    "recipe_id": "brioche_sourdough_900g",
+    "section": "ingredients",
+    "dietary_tags": [
+      "vegetarian",
+      "contains-dairy",
+      "contains-eggs"
+    ]
+  },
+  "filtered_top_1": {
+    "chunk_id": "sourdough_country_2kg_structure_aware_ingredients_001",
+    "score": 0.4022,
+    "recipe_id": "sourdough_country_2kg",
+    "section": "ingredients",
+    "dietary_tags": [
+      "vegan"
+    ]
+  }
+}

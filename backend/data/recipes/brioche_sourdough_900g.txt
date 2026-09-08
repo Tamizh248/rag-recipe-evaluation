@@ -1,0 +1,31 @@
+---
+recipe_id: brioche_sourdough_900g
+cuisine: bread
+dietary_tags: vegetarian, contains-dairy, contains-eggs
+---
+RECIPE: Sourdough Brioche Loaf (900g)
+
+Yields approximately 1060g of dough, enough for one 900g pan loaf.
+
+INGREDIENTS:
+Ingredient | Weight | Baker's Percentage
+Bread Flour | 500g | 100%
+Whole Milk | 150g | 30%
+Eggs (whole) | 100g | 20%
+Unsalted Butter | 150g | 30%
+Granulated Sugar | 50g | 10%
+Fine Sea Salt | 10g | 2%
+Active Sourdough Starter | 100g | 20%
+
+METHOD:
+1. Combine the bread flour, whole milk, eggs, granulated sugar, and active sourdough starter, and mix on low speed until a rough dough forms.
+2. Increase speed and mix until the dough begins to clear the bowl, about 8-10 minutes, then add the fine sea salt.
+3. Add the unsalted butter a few pieces at a time, mixing after each addition until fully absorbed, until the dough passes the windowpane test.
+4. Bulk ferment at room temperature for 1 hour, then refrigerate the covered dough to bulk retard overnight for 10 to 12 hours.
+5. The next day, turn out the chilled dough, shape into a loaf, and place in a buttered loaf pan.
+6. Proof at room temperature for 3 to 4 hours until the dough crowns above the rim of the pan.
+7. Brush with egg wash and bake at 175C (350F) for 35-40 minutes until deep golden brown and the internal temperature reaches 90C (195F).
+8. Cool in the pan for 10 minutes, then turn out onto a rack to cool completely.
+
+ALLERGENS:
+Contains gluten (wheat), dairy (whole milk, butter), and eggs. Contains no tree nuts.

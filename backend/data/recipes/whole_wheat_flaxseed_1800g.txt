@@ -1,0 +1,29 @@
+---
+recipe_id: whole_wheat_flaxseed_1800g
+cuisine: bread
+dietary_tags: vegan
+---
+RECIPE: Whole Wheat Flaxseed Sourdough (1.8kg)
+
+Yields approximately 2080g of dough, enough for two 900g boules (about 1.8kg total).
+
+INGREDIENTS:
+Ingredient | Weight | Baker's Percentage
+Whole Wheat Flour | 1000g | 100%
+Water | 800g | 80%
+Fine Sea Salt | 20g | 2%
+Active Sourdough Starter | 200g | 20%
+Flaxseed (ground) | 60g | 6%
+
+METHOD:
+1. Mix the whole wheat flour and water and rest (autolyse) for 60 minutes; whole wheat bran needs longer hydration than white flour.
+2. Add the active sourdough starter, fine sea salt, and ground flaxseed, mixing until fully incorporated.
+3. Bulk ferment for 4 to 5 hours at room temperature, performing a stretch-and-fold every 30 minutes for the first 2 hours since whole wheat dough is less extensible.
+4. Divide the dough into two pieces, pre-shape into rounds, and rest for 20 minutes.
+5. Shape each piece into a boule and place seam-side up in a floured banneton.
+6. Cold proof in the refrigerator for 12 to 14 hours.
+7. Preheat a covered Dutch oven to 240C (465F). Score and bake covered for 20 minutes, then uncovered for 20-25 minutes until deeply browned.
+8. Cool on a wire rack for at least 1 hour before slicing.
+
+ALLERGENS:
+Contains gluten (wheat) and flaxseed. Contains no dairy, egg, or tree nuts.
