@@ -316,6 +316,30 @@ the fraction of the 8 questions that hit. Computed by
 `scripts/evaluate_retrieval.py`, never hand-edited — see
 `evaluation/results.md` §3 for the actual measured numbers.
 
+## Task B: Hybrid Retrieval Evaluation
+
+Task B uses a separate, fixed 12-question golden set at
+[`evaluation/golden_set.jsonl`](evaluation/golden_set.jsonl). Each record has
+the expected `chunk_id`; six questions contain exact or unusual terms such as
+`flaxseed`, `rosemary`, `caraway`, or a named oven temperature. The production
+retriever uses the task's single retrieval change: lexical BM25 and dense
+cosine rankings combined with reciprocal-rank fusion (RRF, `k=60`). The two
+score scales are not added or averaged.
+
+To reproduce the dense-only baseline and hybrid after-measurement using the
+same questions:
+
+```bash
+cd backend
+python scripts/ingest_recipes.py --strategy structure-aware
+python scripts/evaluate_hybrid_retrieval.py
+```
+
+The script writes per-question top-3 inspection evidence, R/G/Not-In-Corpus
+labels, hit-rate@3, and p50 query latency to
+[`evaluation/hybrid_retrieval_dump.json`](evaluation/hybrid_retrieval_dump.json).
+The Task B report is recorded in [`evaluation/results.md`](evaluation/results.md).
+
 ## Metadata Filtering
 
 `dietary_tags` filtering is applied as a real ChromaDB `where` clause at

@@ -1,106 +1,151 @@
-<div class="page">
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true">R</span>
-        <div class="brand-text">
-          <span class="brand-name">Recipe RAG</span>
-          <span class="brand-sub">Evaluation Console</span>
-        </div>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <div class="brand-text">
+        <span class="brand-name">Recipe RAG</span>
+        <span class="brand-sub">Evaluation Console</span>
       </div>
     </div>
-  </header>
 
-  <main class="content">
-    <section class="card">
-      <h1 class="card-title">Ask a question</h1>
-      <p class="card-subtitle">Query the recipe knowledge base and inspect retrieval quality.</p>
+    <nav class="sidebar-nav">
+      <span class="nav-item nav-item-active">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M11 4a7 7 0 1 0 4.24 12.58l4.59 4.59a1 1 0 0 0 1.42-1.42l-4.59-4.59A7 7 0 0 0 11 4Zm-5 7a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" fill="currentColor"/>
+        </svg>
+        Query Console
+      </span>
+      <span class="nav-item nav-item-disabled">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 19h16M4 19V9l5-4 5 4v10M14 19v-6h4v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Evaluation Runs
+        <span class="nav-soon">Soon</span>
+      </span>
+      <span class="nav-item nav-item-disabled">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        Chunk Explorer
+        <span class="nav-soon">Soon</span>
+      </span>
+    </nav>
 
-      <div class="field">
-        <label for="question">Question</label>
-        <textarea id="question" rows="3" class="textarea" [(ngModel)]="question"></textarea>
+    <div class="sidebar-footer">
+      <div class="env-pill">
+        <span class="dot" aria-hidden="true"></span>
+        API · localhost:8000
       </div>
+    </div>
+  </aside>
 
-      <div class="field-row">
-        <div class="field">
-          <label for="strategy">Chunking strategy</label>
-          <select id="strategy" class="select" [(ngModel)]="strategy">
-            <option value="current">Current (baseline)</option>
-            <option value="structure-aware">Structure-aware</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="dietaryTag">Dietary tag filter</label>
-          <select id="dietaryTag" class="select" [(ngModel)]="dietaryTag">
-            @for (tag of dietaryTagOptions; track tag) {
-              <option [value]="tag">{{ tag || '(none)' }}</option>
-            }
-          </select>
-        </div>
+  <div class="main-shell">
+    <header class="topbar">
+      <div>
+        <h1 class="page-title">Recipe RAG — Query Console</h1>
+        <p class="page-subtitle">Query the recipe knowledge base and inspect retrieval quality.</p>
       </div>
+    </header>
 
-      <div class="actions">
-        <button class="btn btn-primary" (click)="ask()" [disabled]="loading()">
-          @if (loading()) {
-            <span class="spinner" aria-hidden="true"></span>
-          }
-          {{ loading() ? 'Asking…' : 'Ask' }}
-        </button>
-      </div>
+    <main class="content">
+      <div class="dashboard-grid">
+        <section class="card query-card">
+          <h2 class="card-title">Ask a question</h2>
+          <p class="card-subtitle">Choose a chunking strategy and optional dietary filter, then ask.</p>
 
-      @if (error()) {
-        <div class="alert" role="alert">{{ error() }}</div>
-      }
-    </section>
+          <div class="field">
+            <label for="question">Question</label>
+            <textarea id="question" rows="4" class="textarea" [(ngModel)]="question"></textarea>
+          </div>
 
-    @if (chatResponse(); as response) {
-      <section class="card">
-        <div class="result-header">
-          <h2 class="card-title">Answer</h2>
-          <span class="badge" [class.badge-warn]="response.refused" [class.badge-ok]="!response.refused">
-            {{ response.refused ? 'Refused' : 'Answered' }}
-          </span>
-        </div>
+          <div class="field">
+            <label for="strategy">Chunking strategy</label>
+            <select id="strategy" class="select" [(ngModel)]="strategy">
+              <option value="current">Current (baseline)</option>
+              <option value="structure-aware">Structure-aware</option>
+            </select>
+          </div>
 
-        <p class="answer-text">{{ response.answer }}</p>
-
-        <div class="subsection">
-          <h3 class="section-title">Sources</h3>
-          @if (response.citations.length > 0) {
-            <ul class="chip-list">
-              @for (citation of response.citations; track citation.chunk_id) {
-                <li class="chip">{{ citation.chunk_id }}</li>
+          <div class="field">
+            <label for="dietaryTag">Dietary tag filter</label>
+            <select id="dietaryTag" class="select" [(ngModel)]="dietaryTag">
+              @for (tag of dietaryTagOptions; track tag) {
+                <option [value]="tag">{{ tag || '(none)' }}</option>
               }
-            </ul>
-          } @else {
-            <p class="muted">No citations returned.</p>
+            </select>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" (click)="ask()" [disabled]="loading()">
+              @if (loading()) {
+                <span class="spinner" aria-hidden="true"></span>
+              }
+              {{ loading() ? 'Asking…' : 'Ask' }}
+            </button>
+          </div>
+
+          @if (error()) {
+            <div class="alert" role="alert">{{ error() }}</div>
           }
-        </div>
+        </section>
 
-        <button class="btn btn-secondary" (click)="toggleChunks()">
-          {{ showChunks() ? 'Hide retrieved chunks' : 'Show retrieved chunks' }}
-        </button>
+        <section class="card result-card">
+          @if (chatResponse(); as response) {
+            <div class="result-header">
+              <h2 class="card-title">Answer</h2>
+              <span class="badge" [class.badge-warn]="response.refused" [class.badge-ok]="!response.refused">
+                {{ response.refused ? 'Refused' : 'Answered' }}
+              </span>
+            </div>
 
-        @if (showChunks()) {
-          <ul class="chunk-list">
-            @for (chunk of retrievedChunks(); track chunk.chunk_id) {
-              <li class="chunk-item">
-                <div class="chunk-meta">
-                  <span class="chunk-id">{{ chunk.chunk_id }}</span>
-                  <span class="chunk-score">score {{ chunk.score.toFixed(3) }}</span>
-                  <span class="chunk-section">{{ chunk.section }}</span>
-                </div>
-                <pre class="chunk-text">{{ chunk.text }}</pre>
-              </li>
+            <p class="answer-text">{{ response.answer }}</p>
+
+            <div class="subsection">
+              <h3 class="section-title">Sources</h3>
+              @if (response.citations.length > 0) {
+                <ul class="chip-list">
+                  @for (citation of response.citations; track citation.chunk_id) {
+                    <li class="chip">{{ citation.chunk_id }}</li>
+                  }
+                </ul>
+              } @else {
+                <p class="muted">No citations returned.</p>
+              }
+            </div>
+
+            <button class="btn btn-secondary" (click)="toggleChunks()">
+              {{ showChunks() ? 'Hide retrieved chunks' : 'Show retrieved chunks' }}
+            </button>
+
+            @if (showChunks()) {
+              <ul class="chunk-list">
+                @for (chunk of retrievedChunks(); track chunk.chunk_id) {
+                  <li class="chunk-item">
+                    <div class="chunk-meta">
+                      <span class="chunk-id">{{ chunk.chunk_id }}</span>
+                      <span class="chunk-score">score {{ chunk.score.toFixed(3) }}</span>
+                      <span class="chunk-section">{{ chunk.section }}</span>
+                    </div>
+                    <pre class="chunk-text">{{ chunk.text }}</pre>
+                  </li>
+                }
+              </ul>
             }
-          </ul>
-        }
-      </section>
-    }
-  </main>
+          } @else {
+            <div class="empty-state">
+              <svg class="empty-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M11 4a7 7 0 1 0 4.24 12.58l4.59 4.59a1 1 0 0 0 1.42-1.42l-4.59-4.59A7 7 0 0 0 11 4Zm-5 7a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" fill="currentColor"/>
+              </svg>
+              <p class="empty-title">No results yet</p>
+              <p class="empty-subtitle">Ask a question to see the answer, sources, and retrieved chunks here.</p>
+            </div>
+          }
+        </section>
+      </div>
+    </main>
 
-  <footer class="page-footer">
-    <span>Recipe RAG Evaluation Console</span>
-  </footer>
+    <footer class="page-footer">
+      <span>Recipe RAG Evaluation Console</span>
+    </footer>
+  </div>
 </div>

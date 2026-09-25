@@ -1,0 +1,276 @@
+{
+  "golden_set": "evaluation/golden_set.jsonl",
+  "strategy": "structure-aware",
+  "top_k": 3,
+  "retrieval_change": {
+    "name": "BM25 + RRF",
+    "rrf_k": 60
+  },
+  "latency_measurements_per_question": 5,
+  "baseline": {
+    "name": "dense-only cosine retrieval",
+    "hit_rate_at_3": 0.75,
+    "p50_latency_ms": 15.236999999615364
+  },
+  "after": {
+    "name": "BM25 + dense RRF retrieval",
+    "hit_rate_at_3": 1.0,
+    "p50_latency_ms": 16.058099980000407
+  },
+  "failure_tally": {
+    "R": 3,
+    "G": 0,
+    "Not-In-Corpus": 0
+  },
+  "questions": [
+    {
+      "id": "B1",
+      "question": "How many grams of ground flaxseed are in the Whole Wheat Flaxseed Sourdough?",
+      "correct_chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001",
+      "exact_token": "flaxseed",
+      "dense_top_3": [
+        "whole_wheat_flaxseed_1800g_structure_aware_title_000",
+        "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001",
+        "whole_wheat_flaxseed_1800g_structure_aware_allergens_003"
+      ],
+      "hybrid_top_3": [
+        "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001",
+        "whole_wheat_flaxseed_1800g_structure_aware_title_000",
+        "whole_wheat_flaxseed_1800g_structure_aware_method_002"
+      ],
+      "baseline_hit": true,
+      "after_hit": true,
+      "baseline_failure_label": null,
+      "inspection_evidence": null,
+      "outcome": "unaffected-hit"
+    },
+    {
+      "id": "B2",
+      "question": "What recipe has a 0.75% ingredient?",
+      "correct_chunk_id": "rosemary_olive_focaccia_1500g_structure_aware_ingredients_001",
+      "exact_token": "0.75%",
+      "dense_top_3": [
+        "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001",
+        "rye_sourdough_900g_structure_aware_ingredients_001",
+        "sourdough_country_2kg_structure_aware_ingredients_001"
+      ],
+      "hybrid_top_3": [
+        "rosemary_olive_focaccia_1500g_structure_aware_ingredients_001",
+        "sourdough_country_2kg_structure_aware_ingredients_001",
+        "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001"
+      ],
+      "baseline_hit": false,
+      "after_hit": true,
+      "baseline_failure_label": "R",
+      "inspection_evidence": "Correct chunk rosemary_olive_focaccia_1500g_structure_aware_ingredients_001 is absent from dense top-3: ['whole_wheat_flaxseed_1800g_structure_aware_ingredients_001', 'rye_sourdough_900g_structure_aware_ingredients_001', 'sourdough_country_2kg_structure_aware_ingredients_001'].",
+      "outcome": "fixed"
+    },
+    {
+      "id": "B3",
+      "question": "How many grams of caraway seeds are in the Caraway Rye Sourdough?",
+      "correct_chunk_id": "rye_sourdough_900g_structure_aware_ingredients_001",
+      "exact_token": "caraway",
+      "dense_top_3": [
+        "rye_sourdough_900g_structure_aware_title_000",
+        "rye_sourdough_900g_structure_aware_ingredients_001",
+        "rye_sourdough_900g_structure_aware_allergens_003"
+      ],
+      "hybrid_top_3": [
+        "rye_sourdough_900g_structure_aware_title_000",
+        "rye_sourdough_900g_structure_aware_ingredients_001",
+        "rye_sourdough_900g_structure_aware_method_002"
+      ],
+      "baseline_hit": true,
+      "after_hit": true,
+      "baseline_failure_label": null,
+      "inspection_evidence": null,
+      "outcome": "unaffected-hit"
+    },
+    {
+      "id": "B4",
+      "question": "Where is 175C specified in the recipe cards?",
+      "correct_chunk_id": "brioche_sourdough_900g_structure_aware_method_002",
+      "exact_token": "175C",
+      "dense_top_3": [
+        "brioche_sourdough_900g_structure_aware_ingredients_001",
+        "sourdough_country_2kg_structure_aware_ingredients_001",
+        "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001"
+      ],
+      "hybrid_top_3": [
+        "brioche_sourdough_900g_structure_aware_method_002",
+        "sourdough_country_2kg_structure_aware_title_000",
+        "sourdough_country_2kg_structure_aware_method_002"
+      ],
+      "baseline_hit": false,
+      "after_hit": true,
+      "baseline_failure_label": "R",
+      "inspection_evidence": "Correct chunk brioche_sourdough_900g_structure_aware_method_002 is absent from dense top-3: ['brioche_sourdough_900g_structure_aware_ingredients_001', 'sourdough_country_2kg_structure_aware_ingredients_001', 'whole_wheat_flaxseed_1800g_structure_aware_ingredients_001'].",
+      "outcome": "fixed"
+    },
+    {
+      "id": "B5",
+      "question": "What oven temperature in Celsius is used for the Sourdough Country Loaf?",
+      "correct_chunk_id": "sourdough_country_2kg_structure_aware_method_002",
+      "exact_token": "250C",
+      "dense_top_3": [
+        "sourdough_country_2kg_structure_aware_title_000",
+        "sourdough_country_2kg_structure_aware_method_002",
+        "brioche_sourdough_900g_structure_aware_title_000"
+      ],
+      "hybrid_top_3": [
+        "sourdough_country_2kg_structure_aware_method_002",
+        "sourdough_country_2kg_structure_aware_title_000",
+        "brioche_sourdough_900g_structure_aware_method_002"
+      ],
+      "baseline_hit": true,
+      "after_hit": true,
+      "baseline_failure_label": null,
+      "inspection_evidence": null,
+      "outcome": "unaffected-hit"
+    },
+    {
+      "id": "B6",
+      "question": "Which recipe uses 465F?",
+      "correct_chunk_id": "whole_wheat_flaxseed_1800g_structure_aware_method_002",
+      "exact_token": "465F",
+      "dense_top_3": [
+        "rosemary_olive_focaccia_1500g_structure_aware_ingredients_001",
+        "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001",
+        "brioche_sourdough_900g_structure_aware_ingredients_001"
+      ],
+      "hybrid_top_3": [
+        "rosemary_olive_focaccia_1500g_structure_aware_title_000",
+        "sourdough_country_2kg_structure_aware_title_000",
+        "whole_wheat_flaxseed_1800g_structure_aware_method_002"
+      ],
+      "baseline_hit": false,
+      "after_hit": true,
+      "baseline_failure_label": "R",
+      "inspection_evidence": "Correct chunk whole_wheat_flaxseed_1800g_structure_aware_method_002 is absent from dense top-3: ['rosemary_olive_focaccia_1500g_structure_aware_ingredients_001', 'whole_wheat_flaxseed_1800g_structure_aware_ingredients_001', 'brioche_sourdough_900g_structure_aware_ingredients_001'].",
+      "outcome": "fixed"
+    },
+    {
+      "id": "B7",
+      "question": "How much active rye starter is used in the Caraway Rye Sourdough?",
+      "correct_chunk_id": "rye_sourdough_900g_structure_aware_ingredients_001",
+      "exact_token": "rye",
+      "dense_top_3": [
+        "rye_sourdough_900g_structure_aware_title_000",
+        "rye_sourdough_900g_structure_aware_ingredients_001",
+        "rye_sourdough_900g_structure_aware_method_002"
+      ],
+      "hybrid_top_3": [
+        "rye_sourdough_900g_structure_aware_method_002",
+        "rye_sourdough_900g_structure_aware_ingredients_001",
+        "rye_sourdough_900g_structure_aware_title_000"
+      ],
+      "baseline_hit": true,
+      "after_hit": true,
+      "baseline_failure_label": null,
+      "inspection_evidence": null,
+      "outcome": "unaffected-hit"
+    },
+    {
+      "id": "B8",
+      "question": "Which ingredient is listed at 12.5%?",
+      "correct_chunk_id": "rosemary_olive_focaccia_1500g_structure_aware_ingredients_001",
+      "exact_token": "12.5%",
+      "dense_top_3": [
+        "rye_sourdough_900g_structure_aware_ingredients_001",
+        "whole_wheat_flaxseed_1800g_structure_aware_ingredients_001",
+        "rosemary_olive_focaccia_1500g_structure_aware_ingredients_001"
+      ],
+      "hybrid_top_3": [
+        "rosemary_olive_focaccia_1500g_structure_aware_ingredients_001",
+        "rye_sourdough_900g_structure_aware_ingredients_001",
+        "sourdough_country_2kg_structure_aware_ingredients_001"
+      ],
+      "baseline_hit": true,
+      "after_hit": true,
+      "baseline_failure_label": null,
+      "inspection_evidence": null,
+      "outcome": "unaffected-hit"
+    },
+    {
+      "id": "B9",
+      "question": "How long does the Sourdough Brioche dough bulk retard in the refrigerator?",
+      "correct_chunk_id": "brioche_sourdough_900g_structure_aware_method_002",
+      "dense_top_3": [
+        "brioche_sourdough_900g_structure_aware_method_002",
+        "sourdough_country_2kg_structure_aware_method_002",
+        "whole_wheat_flaxseed_1800g_structure_aware_method_002"
+      ],
+      "hybrid_top_3": [
+        "brioche_sourdough_900g_structure_aware_method_002",
+        "sourdough_country_2kg_structure_aware_method_002",
+        "whole_wheat_flaxseed_1800g_structure_aware_method_002"
+      ],
+      "baseline_hit": true,
+      "after_hit": true,
+      "baseline_failure_label": null,
+      "inspection_evidence": null,
+      "outcome": "unaffected-hit"
+    },
+    {
+      "id": "B10",
+      "question": "What vessel is used to bake the Sourdough Country Loaf?",
+      "correct_chunk_id": "sourdough_country_2kg_structure_aware_method_002",
+      "dense_top_3": [
+        "sourdough_country_2kg_structure_aware_allergens_003",
+        "sourdough_country_2kg_structure_aware_title_000",
+        "sourdough_country_2kg_structure_aware_method_002"
+      ],
+      "hybrid_top_3": [
+        "sourdough_country_2kg_structure_aware_method_002",
+        "sourdough_country_2kg_structure_aware_allergens_003",
+        "sourdough_country_2kg_structure_aware_title_000"
+      ],
+      "baseline_hit": true,
+      "after_hit": true,
+      "baseline_failure_label": null,
+      "inspection_evidence": null,
+      "outcome": "unaffected-hit"
+    },
+    {
+      "id": "B11",
+      "question": "When is salt added to the Caraway Rye Sourdough dough?",
+      "correct_chunk_id": "rye_sourdough_900g_structure_aware_method_002",
+      "dense_top_3": [
+        "rye_sourdough_900g_structure_aware_method_002",
+        "rye_sourdough_900g_structure_aware_allergens_003",
+        "rye_sourdough_900g_structure_aware_ingredients_001"
+      ],
+      "hybrid_top_3": [
+        "rye_sourdough_900g_structure_aware_method_002",
+        "rye_sourdough_900g_structure_aware_ingredients_001",
+        "rye_sourdough_900g_structure_aware_title_000"
+      ],
+      "baseline_hit": true,
+      "after_hit": true,
+      "baseline_failure_label": null,
+      "inspection_evidence": null,
+      "outcome": "unaffected-hit"
+    },
+    {
+      "id": "B12",
+      "question": "Which recipe contains tree nuts and which nut is named?",
+      "correct_chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_allergens_003",
+      "exact_token": "tree nuts",
+      "dense_top_3": [
+        "cinnamon_raisin_walnut_800g_structure_aware_allergens_003",
+        "cinnamon_raisin_walnut_800g_structure_aware_ingredients_001",
+        "whole_wheat_flaxseed_1800g_structure_aware_allergens_003"
+      ],
+      "hybrid_top_3": [
+        "cinnamon_raisin_walnut_800g_structure_aware_allergens_003",
+        "whole_wheat_flaxseed_1800g_structure_aware_allergens_003",
+        "rosemary_olive_focaccia_1500g_structure_aware_allergens_003"
+      ],
+      "baseline_hit": true,
+      "after_hit": true,
+      "baseline_failure_label": null,
+      "inspection_evidence": null,
+      "outcome": "unaffected-hit"
+    }
+  ]
+}

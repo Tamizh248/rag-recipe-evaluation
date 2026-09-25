@@ -327,3 +327,95 @@ priori preference:
 
 For this recipe-card corpus and question set, those tradeoffs are outweighed
 by the retrieval and generation quality gap.
+
+## 11. Task B: Failure Separation and Hybrid Retrieval
+
+### Golden set
+
+The fixed Task B golden set is [`golden_set.jsonl`](./golden_set.jsonl). Each
+line names a known chunk ID, so Hit@3 tests retrieval of the exact supporting
+context rather than a recipe-level proxy. The repository contains no user
+question log; these are manually authored user-style questions against the
+six supplied recipe cards and are disclosed as such rather than presented as
+historical user traffic. The set is fixed for the before/after comparison.
+
+| ID | Question | Known-correct chunk_id |
+|---|---|---|
+| B1 | How many grams of ground flaxseed are in the Whole Wheat Flaxseed Sourdough? | `whole_wheat_flaxseed_1800g_structure_aware_ingredients_001` |
+| B2 | What recipe has a 0.75% ingredient? | `rosemary_olive_focaccia_1500g_structure_aware_ingredients_001` |
+| B3 | How many grams of caraway seeds are in the Caraway Rye Sourdough? | `rye_sourdough_900g_structure_aware_ingredients_001` |
+| B4 | Where is 175C specified in the recipe cards? | `brioche_sourdough_900g_structure_aware_method_002` |
+| B5 | What oven temperature in Celsius is used for the Sourdough Country Loaf? | `sourdough_country_2kg_structure_aware_method_002` |
+| B6 | Which recipe uses 465F? | `whole_wheat_flaxseed_1800g_structure_aware_method_002` |
+| B7 | How much active rye starter is used in the Caraway Rye Sourdough? | `rye_sourdough_900g_structure_aware_ingredients_001` |
+| B8 | Which ingredient is listed at 12.5%? | `rosemary_olive_focaccia_1500g_structure_aware_ingredients_001` |
+| B9 | How long does the Sourdough Brioche dough bulk retard in the refrigerator? | `brioche_sourdough_900g_structure_aware_method_002` |
+| B10 | What vessel is used to bake the Sourdough Country Loaf? | `sourdough_country_2kg_structure_aware_method_002` |
+| B11 | When is salt added to the Caraway Rye Sourdough dough? | `rye_sourdough_900g_structure_aware_method_002` |
+| B12 | Which recipe contains tree nuts and which nut is named? | `cinnamon_raisin_walnut_800g_structure_aware_allergens_003` |
+
+The exact-token cases include `flaxseed`, `0.75%`, `caraway`, `175C`,
+`250C`, `465F`, `12.5%`, and `tree nuts`.
+
+### Baseline inspection and labels
+
+Dense-only cosine retrieval was evaluated at top-3 before enabling hybrid
+retrieval. A miss is R when the known-correct chunk is absent from the
+inspection view; no answer model is called in this search-only evaluation, so
+there are no G labels. Every golden target is a verified stored chunk, so
+there are no Not-In-Corpus labels.
+
+| Label | Count | Inspection evidence |
+|---|---:|---|
+| R | 3 | B2, B4, and B6 are listed below. |
+| G | 0 | Search-only evaluation; no generator ran. |
+| Not-In-Corpus | 0 | All 12 `correct_chunk_id` values resolve in the structure-aware collection. |
+
+- **B2 — R:** expected `rosemary_olive_focaccia_1500g_structure_aware_ingredients_001`; dense top-3 was Whole Wheat ingredients, Rye ingredients, Country ingredients.
+- **B4 — R:** expected `brioche_sourdough_900g_structure_aware_method_002`; dense top-3 was Brioche ingredients, Country ingredients, Whole Wheat ingredients.
+- **B6 — R:** expected `whole_wheat_flaxseed_1800g_structure_aware_method_002`; dense top-3 was Rosemary ingredients, Whole Wheat ingredients, Brioche ingredients.
+
+### One retrieval change and measurement
+
+The one change is **BM25 + reciprocal-rank fusion**, with `k=60`. The R tally
+is entirely exact numeric/temperature retrieval misses, so lexical BM25 is
+the targeted complement to dense similarity. Dense and lexical scores are
+never added: each retriever contributes only a rank to RRF. No reranker,
+embedding-model change, or MMR was introduced.
+
+Measurements used the same 12 questions, `structure-aware` corpus, top-3,
+five warmed query measurements per question, and `all-MiniLM-L6-v2` on CPU.
+The run used a separate temporary Chroma directory because the development
+server held the normal embedded Chroma directory open.
+
+| Metric | Dense-only baseline | BM25 + dense RRF | Change |
+|---|---:|---:|---:|
+| Hit-rate@3 | 9/12 (75.0%) | 12/12 (100.0%) | +25.0 percentage points |
+| p50 latency/query | 37.07 ms | 39.12 ms | +2.04 ms |
+
+### Per-question outcome
+
+| ID | Dense Hit@3 | Hybrid Hit@3 | Outcome |
+|---|---|---|---|
+| B1 | Yes | Yes | Unaffected hit |
+| B2 | No | Yes | Fixed |
+| B3 | Yes | Yes | Unaffected hit |
+| B4 | No | Yes | Fixed |
+| B5 | Yes | Yes | Unaffected hit |
+| B6 | No | Yes | Fixed |
+| B7 | Yes | Yes | Unaffected hit |
+| B8 | Yes | Yes | Unaffected hit |
+| B9 | Yes | Yes | Unaffected hit |
+| B10 | Yes | Yes | Unaffected hit |
+| B11 | Yes | Yes | Unaffected hit |
+| B12 | Yes | Yes | Unaffected hit |
+
+The original R failures B2 (`0.75%`), B4 (`175C`), and B6 (`465F`) were all
+fixed. No original R failure was left untouched. B1, B3, B5, B7, B8, B9,
+B10, B11, and B12 already hit under dense retrieval and remain hits.
+
+**Shipping decision: ship BM25 + RRF.** It recovers all three observed R
+failures and raises Hit@3 by 25.0 percentage points for a 2.04 ms p50 latency
+increase on this corpus. Re-run `backend/scripts/evaluate_hybrid_retrieval.py`
+to regenerate the machine-readable inspection dump for the configured local
+Chroma directory.

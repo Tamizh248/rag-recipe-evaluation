@@ -140,3 +140,21 @@ class ChromaStore:
             score = 1.0 - distance  # cosine distance -> cosine similarity
             retrieved.append(RetrievedChunk(chunk_id=chunk_id, text=text, metadata=metadata, score=score))
         return retrieved
+
+    def get_all(
+        self, strategy: ChunkingStrategy, filters: SearchFilters | None = None
+    ) -> list[RetrievedChunk]:
+        """Return the filter-eligible corpus for lexical ranking."""
+        collection = self.get_collection(strategy)
+        result = collection.get(where=build_where_clause(filters), include=["documents", "metadatas"])
+        return [
+            RetrievedChunk(
+                chunk_id=chunk_id,
+                text=text,
+                metadata=_stored_metadata_to_chunk_metadata(chunk_id, stored_metadata),
+                score=0.0,
+            )
+            for chunk_id, text, stored_metadata in zip(
+                result["ids"], result["documents"], result["metadatas"]
+            )
+        ]

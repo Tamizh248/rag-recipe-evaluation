@@ -1,0 +1,12 @@
+{"id":"B1","question":"How many grams of ground flaxseed are in the Whole Wheat Flaxseed Sourdough?","correct_chunk_id":"whole_wheat_flaxseed_1800g_structure_aware_ingredients_001","exact_token":"flaxseed"}
+{"id":"B2","question":"What recipe has a 0.75% ingredient?","correct_chunk_id":"rosemary_olive_focaccia_1500g_structure_aware_ingredients_001","exact_token":"0.75%"}
+{"id":"B3","question":"How many grams of caraway seeds are in the Caraway Rye Sourdough?","correct_chunk_id":"rye_sourdough_900g_structure_aware_ingredients_001","exact_token":"caraway"}
+{"id":"B4","question":"Where is 175C specified in the recipe cards?","correct_chunk_id":"brioche_sourdough_900g_structure_aware_method_002","exact_token":"175C"}
+{"id":"B5","question":"What oven temperature in Celsius is used for the Sourdough Country Loaf?","correct_chunk_id":"sourdough_country_2kg_structure_aware_method_002","exact_token":"250C"}
+{"id":"B6","question":"Which recipe uses 465F?","correct_chunk_id":"whole_wheat_flaxseed_1800g_structure_aware_method_002","exact_token":"465F"}
+{"id":"B7","question":"How much active rye starter is used in the Caraway Rye Sourdough?","correct_chunk_id":"rye_sourdough_900g_structure_aware_ingredients_001","exact_token":"rye"}
+{"id":"B8","question":"Which ingredient is listed at 12.5%?","correct_chunk_id":"rosemary_olive_focaccia_1500g_structure_aware_ingredients_001","exact_token":"12.5%"}
+{"id":"B9","question":"How long does the Sourdough Brioche dough bulk retard in the refrigerator?","correct_chunk_id":"brioche_sourdough_900g_structure_aware_method_002"}
+{"id":"B10","question":"What vessel is used to bake the Sourdough Country Loaf?","correct_chunk_id":"sourdough_country_2kg_structure_aware_method_002"}
+{"id":"B11","question":"When is salt added to the Caraway Rye Sourdough dough?","correct_chunk_id":"rye_sourdough_900g_structure_aware_method_002"}
+{"id":"B12","question":"Which recipe contains tree nuts and which nut is named?","correct_chunk_id":"cinnamon_raisin_walnut_800g_structure_aware_allergens_003","exact_token":"tree nuts"}

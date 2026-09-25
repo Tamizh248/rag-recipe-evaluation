@@ -1,34 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  --color-bg: #f3f5f9;
-  --color-surface: #ffffff;
-  --color-border: #e3e7ee;
-  --color-border-strong: #cbd2df;
+  --color-bg: #0b0e14;
+  --color-bg-elevated: #10141d;
+  --color-surface: #141924;
+  --color-surface-alt: #0e1219;
+  --color-border: #232a38;
+  --color-border-strong: #313a4c;
 
-  --color-text: #1a2033;
-  --color-text-muted: #5c6579;
-  --color-text-subtle: #8891a3;
+  --color-text: #eef1f7;
+  --color-text-muted: #9aa4b8;
+  --color-text-subtle: #6b7688;
 
-  --color-primary: #1d4ed8;
-  --color-primary-hover: #1642b3;
-  --color-primary-soft: #eaf0fe;
+  --color-primary: #5b8cff;
+  --color-primary-hover: #4573e8;
+  --color-primary-soft: rgba(91, 140, 255, 0.14);
 
-  --color-success: #157a4a;
-  --color-success-soft: #e5f6ee;
-  --color-warn: #b45309;
-  --color-warn-soft: #fdf1e2;
-  --color-danger: #b42318;
-  --color-danger-soft: #fdeceb;
+  --color-accent: #22d3ee;
+  --color-accent-soft: rgba(34, 211, 238, 0.12);
+
+  --color-success: #34d399;
+  --color-success-soft: rgba(52, 211, 153, 0.12);
+  --color-warn: #fbbf24;
+  --color-warn-soft: rgba(251, 191, 36, 0.12);
+  --color-danger: #f87171;
+  --color-danger-soft: rgba(248, 113, 113, 0.12);
 
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
 
-  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
-  --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.45);
 
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
@@ -54,4 +59,24 @@ body {
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-primary-soft);
+  color: var(--color-text);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
 }

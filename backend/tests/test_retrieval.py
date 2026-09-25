@@ -20,8 +20,19 @@ def test_search_respects_top_k(retriever):
     assert len(results) <= 2
 
 
-def test_top_result_for_salt_question_is_sourdough_country(retriever):
+def test_hybrid_search_returns_requested_fields_and_respects_top_k(retriever):
     results = retriever.search(
+        "How many grams of ground flaxseed are in the Whole Wheat Flaxseed Sourdough?",
+        strategy="structure-aware",
+        top_k=3,
+    )
+    assert len(results) == 3
+    assert results[0].chunk_id
+    assert isinstance(results[0].score, float)
+
+
+def test_top_result_for_salt_question_is_sourdough_country(retriever):
+    results = retriever.search_dense(
         "How much salt, in grams, is used in the Sourdough Country Loaf recipe?",
         strategy="structure-aware",
         top_k=5,
