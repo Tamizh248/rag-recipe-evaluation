@@ -1,0 +1,11 @@
+Week 6 — one-sentence prediction, written BEFORE iterating the judge
+(after agreement_before is known, before judge_v2.txt is written).
+
+Your prediction (what the iteration will fix, and roughly by how much):
+
+>
+
+After iterating (judge_v2.txt), come back and report where this
+prediction was wrong, in one or two sentences:
+
+>

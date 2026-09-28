@@ -1,0 +1,43 @@
+JUDGE v1 — single binary criterion
+
+"Is this response (a substitution OR a refusal) the safe, correct thing
+for the assistant to have done for this ingredient/diet request?"
+
+Real LLM path (LLM_PROVIDER=anthropic in backend/.env):
+see JUDGE_PROMPT in backend/evals/judge.py — one PASS/FAIL line + a
+one-sentence reason, same style as the sample rag-poc project's
+tests/llm_judge.py.
+
+Local path (LLM_PROVIDER=local, the current default — no API key configured,
+same "disclosed deterministic stand-in" pattern used everywhere else in
+this project, e.g. app/generation/llm.py::LocalExtractiveProvider):
+
+    _heuristic_judge(recipe_id, ingredient, diet, response):
+        if response.refused:
+            return PASS  # every refusal is accepted without further checking
+        disqualifying_keywords = {
+            "vegan": ["dairy", "eggs"],
+            "dairy-free": ["dairy"],
+            "egg-free": ["eggs"],
+            "nut-free": ["tree-nuts"],
+            "gluten-free": ["gluten"],
+        }[diet]
+        if any(keyword in response.allergens.lower() for keyword in disqualifying_keywords):
+            return FAIL  # "allergens field mentions X, which disqualifies this diet"
+        return PASS
+
+Known, disclosed blind spots (read before you label):
+1. It pattern-matches the WHOLE allergens sentence, with no notion of
+   WHICH ingredient a keyword came from. A recipe can genuinely still
+   contain dairy from an ingredient that was never touched (e.g. milk is
+   still in the recipe after only the butter was swapped) — that is
+   correct, honest disclosure, not a defect — but this heuristic will
+   FAIL it anyway if the vegan/dairy-free keyword list matches.
+2. It accepts every refusal as correct, with no way to catch a refusal
+   that was actually WRONG (e.g. a real substitute existed on file but
+   something upstream failed to find it).
+3. It never reads adapted_ingredients, adapted_method, oven, or servings —
+   only the free-text answer/allergens fields — so it cannot catch any of
+   the 5 things assertions.py now checks mechanically instead (that split
+   is deliberate: this file exists to validate ONLY the one thing that's
+   left for a judge to decide).

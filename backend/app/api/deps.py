@@ -7,6 +7,8 @@ from app.retrieval.retriever import Retriever
 from app.services.chat_service import ChatService
 from app.services.search_service import SearchService
 from app.services.uploaded_chat_service import UploadedChatService
+from app.substitution.local_provider import get_substitution_provider
+from app.substitution.service import SubstitutionService
 from app.vectorstore.chroma_store import ChromaStore
 
 
@@ -43,3 +45,15 @@ def get_uploaded_chat_service() -> UploadedChatService:
     settings = get_settings()
     provider = get_llm_provider(settings.llm_provider, settings.llm_api_key, settings.llm_model)
     return UploadedChatService(get_retriever(), provider, top_k=settings.top_k)
+
+
+@lru_cache
+def get_substitution_service() -> SubstitutionService:
+    settings = get_settings()
+    provider = get_substitution_provider(settings.llm_provider, settings.llm_api_key, settings.llm_model)
+    return SubstitutionService(
+        get_store(),
+        provider,
+        model_provider=settings.llm_provider,
+        model_name=settings.llm_model,
+    )

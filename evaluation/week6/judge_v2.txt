@@ -1,0 +1,34 @@
+JUDGE v2 — write this AFTER running scripts/run_week6_judge.py once and
+reading its DISAGREE lines.
+
+Required process (per the task brief):
+1. Read every disagreement run_week6_judge.py printed (human label vs
+   judge_pass). Pick exactly 2. For each, decide who was actually right —
+   read the case in blind_review.json plus the underlying recipe, not just
+   the judge's stated reason.
+2. Write ONE sentence, BEFORE you touch the judge's code, predicting what
+   change would fix the judge's mistake on those 2 cases specifically (put
+   this in prediction.txt, not here).
+3. Edit backend/evals/judge.py's `_heuristic_judge` (or, if
+   LLM_PROVIDER=anthropic, JUDGE_PROMPT) using those 2 disagreements as
+   concrete few-shot-style guidance for the fix — e.g. if a disagreement
+   came from blind spot #1 in judge_v1.txt (residual allergen from an
+   UNTOUCHED ingredient wrongly flagged), the fix is to only flag an
+   allergen that is NEW relative to the original recipe's own allergens
+   text, not any allergen keyword anywhere in the final allergens field.
+4. Paste the new heuristic/prompt here, describe exactly what changed
+   from v1 and why (tie it back to the 2 disagreements), then re-run
+   scripts/run_week6_judge.py and report agreement_after next to
+   agreement_before.
+
+v2 heuristic/prompt (fill in after step 3):
+
+>
+
+What changed from v1, and which 2 disagreements it targets:
+
+>
+
+agreement_before → agreement_after:
+
+>

@@ -1,0 +1,751 @@
+{
+  "substitution_cases": [
+    {
+      "id": "S01",
+      "recipe_id": "brioche_sourdough_900g",
+      "ingredient": "unsalted butter",
+      "diet": "vegan",
+      "mode": "verified_substitute_applied",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use vegan butter or coconut oil in place of unsalted butter for a vegan version of this recipe.",
+      "substitute_ingredient": "vegan butter or coconut oil",
+      "allergens": "Contains dairy, eggs, gluten.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 7 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 3 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S02",
+      "recipe_id": "brioche_sourdough_900g",
+      "ingredient": "unsalted butter",
+      "diet": "dairy-free",
+      "mode": "verified_substitute_applied",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use vegan butter or coconut oil in place of unsalted butter for a dairy-free version of this recipe.",
+      "substitute_ingredient": "vegan butter or coconut oil",
+      "allergens": "Contains dairy, eggs, gluten.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 7 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 3 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S03",
+      "recipe_id": "brioche_sourdough_900g",
+      "ingredient": "whole milk",
+      "diet": "vegan",
+      "mode": "substitute_introduces_new_allergen",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use oat milk or almond milk in place of whole milk for a vegan version of this recipe.",
+      "substitute_ingredient": "oat milk or almond milk",
+      "allergens": "Contains dairy, eggs, gluten, tree-nuts.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 7 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 4 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S04",
+      "recipe_id": "brioche_sourdough_900g",
+      "ingredient": "whole milk",
+      "diet": "dairy-free",
+      "mode": "substitute_introduces_new_allergen",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use oat milk or almond milk in place of whole milk for a dairy-free version of this recipe.",
+      "substitute_ingredient": "oat milk or almond milk",
+      "allergens": "Contains dairy, eggs, gluten, tree-nuts.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 7 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 4 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S05",
+      "recipe_id": "brioche_sourdough_900g",
+      "ingredient": "eggs (whole)",
+      "diet": "vegan",
+      "mode": "verified_substitute_applied",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use 1 tbsp ground flaxseed + 3 tbsp water per egg (flax egg) in place of eggs (whole) for a vegan version of this recipe.",
+      "substitute_ingredient": "1 tbsp ground flaxseed + 3 tbsp water per egg (flax egg)",
+      "allergens": "Contains dairy, gluten.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 7 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 2 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S06",
+      "recipe_id": "brioche_sourdough_900g",
+      "ingredient": "eggs (whole)",
+      "diet": "egg-free",
+      "mode": "verified_substitute_applied",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use 1 tbsp ground flaxseed + 3 tbsp water per egg (flax egg) in place of eggs (whole) for a egg-free version of this recipe.",
+      "substitute_ingredient": "1 tbsp ground flaxseed + 3 tbsp water per egg (flax egg)",
+      "allergens": "Contains dairy, gluten.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 7 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 2 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S07",
+      "recipe_id": "cinnamon_raisin_walnut_800g",
+      "ingredient": "honey",
+      "diet": "vegan",
+      "mode": "verified_substitute_applied",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use maple syrup or agave syrup in place of honey for a vegan version of this recipe.",
+      "substitute_ingredient": "maple syrup or agave syrup",
+      "allergens": "Contains gluten, tree-nuts.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 8 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 2 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S08",
+      "recipe_id": "cinnamon_raisin_walnut_800g",
+      "ingredient": "walnuts (chopped)",
+      "diet": "nut-free",
+      "mode": "allergen_correctly_dropped",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use toasted sunflower seeds, or omit entirely in place of walnuts (chopped) for a nut-free version of this recipe.",
+      "substitute_ingredient": "toasted sunflower seeds, or omit entirely",
+      "allergens": "Contains gluten.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 8 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 1 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S09",
+      "recipe_id": "sourdough_country_2kg",
+      "ingredient": "bread flour",
+      "diet": "gluten-free",
+      "mode": "verified_substitute_applied",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use a 1:1 gluten-free bread flour blend with added xanthan gum in place of bread flour for a gluten-free version of this recipe.",
+      "substitute_ingredient": "a 1:1 gluten-free bread flour blend with added xanthan gum",
+      "allergens": "Contains no major allergens on file for the adapted recipe.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 4 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 0 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S10",
+      "recipe_id": "whole_wheat_flaxseed_1800g",
+      "ingredient": "whole wheat flour",
+      "diet": "gluten-free",
+      "mode": "verified_substitute_applied",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use a 1:1 gluten-free flour blend in place of whole wheat flour for a gluten-free version of this recipe.",
+      "substitute_ingredient": "a 1:1 gluten-free flour blend",
+      "allergens": "Contains no major allergens on file for the adapted recipe.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 5 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 0 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S11",
+      "recipe_id": "rye_sourdough_900g",
+      "ingredient": "dark rye flour",
+      "diet": "gluten-free",
+      "mode": "verified_substitute_applied",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use a 1:1 gluten-free flour blend (loses rye's characteristic flavor) in place of dark rye flour for a gluten-free version of this recipe.",
+      "substitute_ingredient": "a 1:1 gluten-free flour blend (loses rye's characteristic flavor)",
+      "allergens": "Contains no major allergens on file for the adapted recipe.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 5 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 0 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S12",
+      "recipe_id": "rosemary_olive_focaccia_1500g",
+      "ingredient": "bread flour",
+      "diet": "gluten-free",
+      "mode": "verified_substitute_applied",
+      "expect_answerable": true,
+      "refused": false,
+      "answer": "Use a 1:1 gluten-free bread flour blend with added xanthan gum in place of bread flour for a gluten-free version of this recipe.",
+      "substitute_ingredient": "a 1:1 gluten-free bread flour blend with added xanthan gum",
+      "allergens": "Contains no major allergens on file for the adapted recipe.",
+      "passed": true,
+      "assertion_results": [
+        [
+          "substitute_appears_in_method_and_ingredients",
+          true,
+          "substitute present in both adapted_method and adapted_ingredients"
+        ],
+        [
+          "oven_temperature_has_units",
+          true,
+          "oven field carries both C and F units"
+        ],
+        [
+          "quantities_parse_as_numbers",
+          true,
+          "all 7 ingredient line(s) carry a numeric, parseable weight"
+        ],
+        [
+          "allergen_warning_present_when_needed",
+          true,
+          "all 0 expected allergen(s) present in allergens field"
+        ],
+        [
+          "servings_are_echoed",
+          true,
+          "servings field echoes the original recipe's yield line"
+        ]
+      ]
+    },
+    {
+      "id": "S13",
+      "recipe_id": "brioche_sourdough_900g",
+      "ingredient": "ground cinnamon",
+      "diet": "vegan",
+      "mode": "ingredient_not_in_recipe",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "'brioche_sourdough_900g' does not list 'ground cinnamon' as an ingredient.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S14",
+      "recipe_id": "sourdough_country_2kg",
+      "ingredient": "walnuts (chopped)",
+      "diet": "nut-free",
+      "mode": "ingredient_not_in_recipe",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "'sourdough_country_2kg' does not list 'walnuts (chopped)' as an ingredient.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S15",
+      "recipe_id": "cinnamon_raisin_walnut_800g",
+      "ingredient": "ground cinnamon",
+      "diet": "vegan",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S16",
+      "recipe_id": "rosemary_olive_focaccia_1500g",
+      "ingredient": "fresh rosemary",
+      "diet": "vegan",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S17",
+      "recipe_id": "sourdough_country_2kg",
+      "ingredient": "active sourdough starter",
+      "diet": "gluten-free",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S18",
+      "recipe_id": "rye_sourdough_900g",
+      "ingredient": "caraway seeds",
+      "diet": "nut-free",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S19",
+      "recipe_id": "whole_wheat_flaxseed_1800g",
+      "ingredient": "flaxseed (ground)",
+      "diet": "vegan",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S20",
+      "recipe_id": "rosemary_olive_focaccia_1500g",
+      "ingredient": "extra virgin olive oil",
+      "diet": "nut-free",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S21",
+      "recipe_id": "sourdough_country_2kg",
+      "ingredient": "bread flour",
+      "diet": "vegan",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S22",
+      "recipe_id": "cinnamon_raisin_walnut_800g",
+      "ingredient": "walnuts (chopped)",
+      "diet": "vegan",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S23",
+      "recipe_id": "brioche_sourdough_900g",
+      "ingredient": "unsalted butter",
+      "diet": "gluten-free",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S24",
+      "recipe_id": "brioche_sourdough_900g",
+      "ingredient": "eggs (whole)",
+      "diet": "nut-free",
+      "mode": "no_substitute_on_file",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S25",
+      "recipe_id": "sourdough_country_2kg",
+      "ingredient": "bread flour",
+      "diet": "nonsense-diet",
+      "mode": "invalid_diet_value",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "Unknown diet 'nonsense-diet'. Valid diets: vegan, dairy-free, egg-free, nut-free, gluten-free.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    },
+    {
+      "id": "S26",
+      "recipe_id": "this_recipe_does_not_exist",
+      "ingredient": "bread flour",
+      "diet": "vegan",
+      "mode": "recipe_not_found",
+      "expect_answerable": false,
+      "refused": true,
+      "answer": "No recipe found with recipe_id 'this_recipe_does_not_exist'.",
+      "substitute_ingredient": null,
+      "allergens": "",
+      "passed": true,
+      "assertion_results": []
+    }
+  ],
+  "regression_cases": [
+    {
+      "id": "R01",
+      "source_trace_id": "e7825230392e4b6fbd4b7c8054ec5340",
+      "mode": "header_line_as_answer",
+      "passed": false,
+      "detail": "answer='Method:'",
+      "answer": "Method:",
+      "citations": [
+        "brioche_sourdough_900g_structure_aware_method_002"
+      ]
+    },
+    {
+      "id": "R02",
+      "source_trace_id": "bafac406db2940178943ac0ff0d91f67",
+      "mode": "wrong_recipe_citation",
+      "passed": false,
+      "detail": "citations=['rye_sourdough_900g_structure_aware_method_002']",
+      "answer": "6. Preheat the oven with a baking stone to 230C (450F). Bake for 40-45 minutes until the crust is deep brown and the loaf sounds hollow when tapped.",
+      "citations": [
+        "rye_sourdough_900g_structure_aware_method_002"
+      ]
+    }
+  ],
+  "pass_rate_by_mode": {
+    "allergen_correctly_dropped": {
+      "pass": 1,
+      "total": 1,
+      "pass_rate": 1.0
+    },
+    "header_line_as_answer": {
+      "pass": 0,
+      "total": 1,
+      "pass_rate": 0.0
+    },
+    "ingredient_not_in_recipe": {
+      "pass": 2,
+      "total": 2,
+      "pass_rate": 1.0
+    },
+    "invalid_diet_value": {
+      "pass": 1,
+      "total": 1,
+      "pass_rate": 1.0
+    },
+    "no_substitute_on_file": {
+      "pass": 10,
+      "total": 10,
+      "pass_rate": 1.0
+    },
+    "recipe_not_found": {
+      "pass": 1,
+      "total": 1,
+      "pass_rate": 1.0
+    },
+    "substitute_introduces_new_allergen": {
+      "pass": 2,
+      "total": 2,
+      "pass_rate": 1.0
+    },
+    "verified_substitute_applied": {
+      "pass": 9,
+      "total": 9,
+      "pass_rate": 1.0
+    },
+    "wrong_recipe_citation": {
+      "pass": 0,
+      "total": 1,
+      "pass_rate": 0.0
+    }
+  }
+}

@@ -14,6 +14,8 @@ from app.generation.llm import LocalExtractiveProvider
 from app.retrieval.retriever import Retriever
 from app.services.chat_service import ChatService
 from app.services.ingestion_service import ingest_recipes
+from app.substitution.local_provider import LocalSubstitutionProvider
+from app.substitution.service import SubstitutionService
 from app.vectorstore.chroma_store import ChromaStore
 
 
@@ -61,5 +63,17 @@ def chat_service(retriever, settings, tmp_path_factory):
         top_k=settings.top_k,
         model_provider="local",
         model_name="local-extractive",
+        trace_logger=trace_logger,
+    )
+
+
+@pytest.fixture(scope="session")
+def substitution_service(store, tmp_path_factory):
+    trace_logger = TraceLogger(tmp_path_factory.mktemp("sub_traces") / "test_traces.jsonl")
+    return SubstitutionService(
+        store,
+        LocalSubstitutionProvider(),
+        model_provider="local",
+        model_name="local-substitution",
         trace_logger=trace_logger,
     )

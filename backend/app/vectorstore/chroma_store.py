@@ -176,6 +176,18 @@ class ChromaStore:
             retrieved.append(RetrievedChunk(chunk_id=chunk_id, text=text, metadata=metadata, score=score))
         return retrieved
 
+    def get_recipe_chunks(self, strategy: ChunkingStrategy, recipe_id: str) -> dict[str, RetrievedChunk]:
+        """Every chunk for one recipe, keyed by section - used by
+        SubstitutionService to ground a substitution request directly by
+        recipe_id, without going through similarity search at all."""
+        collection = self.get_collection(strategy)
+        result = collection.get(where={"recipe_id": recipe_id}, include=["documents", "metadatas"])
+        chunks = {}
+        for chunk_id, text, stored_metadata in zip(result["ids"], result["documents"], result["metadatas"]):
+            metadata = _stored_metadata_to_chunk_metadata(chunk_id, stored_metadata)
+            chunks[metadata.section] = RetrievedChunk(chunk_id=chunk_id, text=text, metadata=metadata, score=1.0)
+        return chunks
+
     def get_all(
         self, strategy: ChunkingStrategy, filters: SearchFilters | None = None
     ) -> list[RetrievedChunk]:

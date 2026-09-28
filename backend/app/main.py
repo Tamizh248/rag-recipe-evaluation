@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import chat, documents, health, ingest, search
+from app.api import chat, documents, health, ingest, search, substitute
 from app.core.config import get_settings
 from app.core.logging import configure_logging
 
@@ -23,3 +23,4 @@ app.include_router(search.router)
 app.include_router(chat.router)
 app.include_router(ingest.router)
 app.include_router(documents.router)
+app.include_router(substitute.router)
