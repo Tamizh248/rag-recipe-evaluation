@@ -6,6 +6,7 @@ from app.generation.llm import get_llm_provider
 from app.retrieval.retriever import Retriever
 from app.services.chat_service import ChatService
 from app.services.search_service import SearchService
+from app.services.uploaded_chat_service import UploadedChatService
 from app.vectorstore.chroma_store import ChromaStore
 
 
@@ -29,3 +30,10 @@ def get_chat_service() -> ChatService:
     settings = get_settings()
     provider = get_llm_provider(settings.llm_provider, settings.llm_api_key, settings.llm_model)
     return ChatService(get_retriever(), provider, top_k=settings.top_k)
+
+
+@lru_cache
+def get_uploaded_chat_service() -> UploadedChatService:
+    settings = get_settings()
+    provider = get_llm_provider(settings.llm_provider, settings.llm_api_key, settings.llm_model)
+    return UploadedChatService(get_retriever(), provider, top_k=settings.top_k)

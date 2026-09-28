@@ -5,12 +5,15 @@ import chromadb
 
 from app.core.constants import KNOWN_DIETARY_TAGS, dietary_flag_key
 from app.models.chunk import Chunk, ChunkingStrategy, ChunkMetadata
+from app.models.document import DocumentInfo, UploadedChunk, UploadedChunkMetadata
 from app.models.search import SearchFilters
 
 COLLECTION_NAMES: dict[ChunkingStrategy, str] = {
     "current": "recipe_chunks_current",
     "structure_aware": "recipe_chunks_structure_aware",
 }
+
+UPLOADED_DOCS_COLLECTION = "uploaded_documents"
 
 
 def build_where_clause(filters: SearchFilters | None) -> dict[str, Any] | None:
@@ -64,6 +67,38 @@ class RetrievedChunk:
         self.text = text
         self.metadata = metadata
         self.score = score
+
+
+class UploadedRetrievedChunk:
+    """Same shape as RetrievedChunk (chunk_id/text/metadata/score), for
+    chunks from the generic uploaded-documents collection. Kept as a
+    separate class rather than reusing RetrievedChunk because its metadata
+    type (UploadedChunkMetadata) has no recipe fields."""
+
+    def __init__(self, chunk_id: str, text: str, metadata: UploadedChunkMetadata, score: float):
+        self.chunk_id = chunk_id
+        self.text = text
+        self.metadata = metadata
+        self.score = score
+
+
+def _uploaded_chunk_to_stored_metadata(metadata: UploadedChunkMetadata) -> dict[str, Any]:
+    return {
+        "doc_id": metadata.doc_id,
+        "source_file": metadata.source_file,
+        "chunk_index": metadata.chunk_index,
+        "uploaded_at": metadata.uploaded_at,
+    }
+
+
+def _stored_metadata_to_uploaded_metadata(chunk_id: str, stored: dict[str, Any]) -> UploadedChunkMetadata:
+    return UploadedChunkMetadata(
+        chunk_id=chunk_id,
+        doc_id=stored["doc_id"],
+        source_file=stored["source_file"],
+        chunk_index=stored["chunk_index"],
+        uploaded_at=stored["uploaded_at"],
+    )
 
 
 class ChromaStore:
@@ -157,4 +192,92 @@ class ChromaStore:
             for chunk_id, text, stored_metadata in zip(
                 result["ids"], result["documents"], result["metadatas"]
             )
+        ]
+
+    # -- Generic uploaded-documents collection -----------------------------
+    # Fully separate from the recipe collections above: no shared state, no
+    # shared methods, so recipe evaluation behavior can never regress here.
+
+    def get_uploaded_collection(self):
+        return self.client.get_or_create_collection(
+            name=UPLOADED_DOCS_COLLECTION,
+            metadata={"hnsw:space": "cosine"},
+        )
+
+    def add_uploaded_chunks(self, chunks: list[UploadedChunk], embeddings: list[list[float]]) -> None:
+        if not chunks:
+            return
+        collection = self.get_uploaded_collection()
+        collection.add(
+            ids=[c.chunk_id for c in chunks],
+            embeddings=embeddings,
+            documents=[c.text for c in chunks],
+            metadatas=[_uploaded_chunk_to_stored_metadata(c.metadata) for c in chunks],
+        )
+
+    def query_uploaded(
+        self, query_embedding: list[float], top_k: int, doc_id: str | None = None
+    ) -> list[UploadedRetrievedChunk]:
+        collection = self.get_uploaded_collection()
+        where = {"doc_id": doc_id} if doc_id else None
+        result = collection.query(
+            query_embeddings=[query_embedding],
+            n_results=top_k,
+            where=where,
+            include=["documents", "metadatas", "distances"],
+        )
+
+        ids = result["ids"][0]
+        documents = result["documents"][0]
+        metadatas = result["metadatas"][0]
+        distances = result["distances"][0]
+
+        retrieved = []
+        for chunk_id, text, stored_metadata, distance in zip(ids, documents, metadatas, distances):
+            metadata = _stored_metadata_to_uploaded_metadata(chunk_id, stored_metadata)
+            score = 1.0 - distance
+            retrieved.append(UploadedRetrievedChunk(chunk_id=chunk_id, text=text, metadata=metadata, score=score))
+        return retrieved
+
+    def get_all_uploaded(self, doc_id: str | None = None) -> list[UploadedRetrievedChunk]:
+        collection = self.get_uploaded_collection()
+        where = {"doc_id": doc_id} if doc_id else None
+        result = collection.get(where=where, include=["documents", "metadatas"])
+        return [
+            UploadedRetrievedChunk(
+                chunk_id=chunk_id,
+                text=text,
+                metadata=_stored_metadata_to_uploaded_metadata(chunk_id, stored_metadata),
+                score=0.0,
+            )
+            for chunk_id, text, stored_metadata in zip(
+                result["ids"], result["documents"], result["metadatas"]
+            )
+        ]
+
+    def delete_uploaded_document(self, doc_id: str) -> None:
+        self.get_uploaded_collection().delete(where={"doc_id": doc_id})
+
+    def list_uploaded_documents(self) -> list[DocumentInfo]:
+        collection = self.get_uploaded_collection()
+        result = collection.get(include=["metadatas"])
+
+        by_doc: dict[str, dict[str, Any]] = {}
+        for stored_metadata in result["metadatas"]:
+            doc_id = stored_metadata["doc_id"]
+            entry = by_doc.setdefault(
+                doc_id,
+                {
+                    "source_file": stored_metadata["source_file"],
+                    "chunk_count": 0,
+                    "uploaded_at": stored_metadata["uploaded_at"],
+                },
+            )
+            entry["chunk_count"] += 1
+            entry["uploaded_at"] = min(entry["uploaded_at"], stored_metadata["uploaded_at"])
+
+        return [
+            DocumentInfo(doc_id=doc_id, source_file=entry["source_file"],
+                         chunk_count=entry["chunk_count"], uploaded_at=entry["uploaded_at"])
+            for doc_id, entry in sorted(by_doc.items(), key=lambda kv: kv[1]["uploaded_at"], reverse=True)
         ]

@@ -52,19 +52,28 @@ def validate_citations(answer: GroundedAnswer, retrieved_chunk_ids: set[str]) ->
     return all(c.chunk_id in retrieved_chunk_ids for c in answer.citations)
 
 
-def enforce_refusal_policy(answer: GroundedAnswer, retrieved_chunk_ids: set[str]) -> GroundedAnswer:
+def enforce_refusal_policy(
+    answer: GroundedAnswer,
+    retrieved_chunk_ids: set[str],
+    refusal_answer: GroundedAnswer = REFUSAL_ANSWER,
+) -> GroundedAnswer:
     """Application-level safety net applied AFTER the LLM responds, regardless
     of provider. Forces a refusal if the LLM violated grounding rules.
+
+    `refusal_answer` defaults to the recipe-domain wording (`REFUSAL_ANSWER`)
+    so existing callers (ChatService) are unaffected; callers for other
+    domains (e.g. UploadedChatService) pass their own domain-appropriate
+    refusal object instead.
     """
     if not answer.answerable:
-        return REFUSAL_ANSWER
+        return refusal_answer
 
     if not answer.citations:
         logger.warning("Rejecting answer with no citations for a factual claim")
-        return REFUSAL_ANSWER
+        return refusal_answer
 
     if not validate_citations(answer, retrieved_chunk_ids):
         logger.warning("Rejecting answer citing a chunk_id outside the retrieved context: %s", answer.citations)
-        return REFUSAL_ANSWER
+        return refusal_answer
 
     return answer

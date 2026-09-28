@@ -9,19 +9,18 @@
     </div>
 
     <nav class="sidebar-nav">
-      <span class="nav-item nav-item-active">
+      <button type="button" class="nav-item" [class.nav-item-active]="activeView() === 'query'" (click)="setActiveView('query')">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M11 4a7 7 0 1 0 4.24 12.58l4.59 4.59a1 1 0 0 0 1.42-1.42l-4.59-4.59A7 7 0 0 0 11 4Zm-5 7a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" fill="currentColor"/>
         </svg>
         Query Console
-      </span>
-      <span class="nav-item nav-item-disabled">
+      </button>
+      <button type="button" class="nav-item" [class.nav-item-active]="activeView() === 'documents'" (click)="setActiveView('documents')">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M4 19h16M4 19V9l5-4 5 4v10M14 19v-6h4v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        Evaluation Runs
-        <span class="nav-soon">Soon</span>
-      </span>
+        My Documents
+      </button>
       <span class="nav-item nav-item-disabled">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
@@ -42,12 +41,18 @@
   <div class="main-shell">
     <header class="topbar">
       <div>
-        <h1 class="page-title">Recipe RAG — Query Console</h1>
-        <p class="page-subtitle">Query the recipe knowledge base and inspect retrieval quality.</p>
+        @if (activeView() === 'query') {
+          <h1 class="page-title">Recipe RAG — Query Console</h1>
+          <p class="page-subtitle">Query the recipe knowledge base and inspect retrieval quality.</p>
+        } @else {
+          <h1 class="page-title">My Documents</h1>
+          <p class="page-subtitle">Upload any document and ask questions grounded only in what you uploaded.</p>
+        }
       </div>
     </header>
 
     <main class="content">
+      @if (activeView() === 'query') {
       <div class="dashboard-grid">
         <section class="card query-card">
           <h2 class="card-title">Ask a question</h2>
@@ -142,6 +147,99 @@
           }
         </section>
       </div>
+      } @else {
+      <div class="dashboard-grid">
+        <section class="card">
+          <h2 class="card-title">Upload a document</h2>
+          <p class="card-subtitle">
+            Supported: .txt, .md, .pdf, .docx, .pptx, .xlsx, .html, .json.
+          </p>
+
+          <div class="field">
+            <label for="fileInput">File</label>
+            <input id="fileInput" type="file" class="select" (change)="onFileSelected($event)" />
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" (click)="uploadFile()" [disabled]="uploading() || !selectedFile()">
+              @if (uploading()) {
+                <span class="spinner" aria-hidden="true"></span>
+              }
+              {{ uploading() ? 'Uploading…' : 'Upload' }}
+            </button>
+          </div>
+
+          @if (docError()) {
+            <div class="alert" role="alert">{{ docError() }}</div>
+          }
+
+          <div class="subsection" style="margin-top: 1.5rem;">
+            <h3 class="section-title">Uploaded documents</h3>
+            @if (documents().length > 0) {
+              <ul class="doc-list">
+                @for (doc of documents(); track doc.doc_id) {
+                  <li class="doc-item">
+                    <div class="doc-meta">
+                      <span class="doc-name">{{ doc.source_file }}</span>
+                      <span class="doc-chunks">{{ doc.chunk_count }} chunk{{ doc.chunk_count === 1 ? '' : 's' }}</span>
+                    </div>
+                    <button class="btn btn-secondary doc-delete" (click)="deleteDocument(doc.doc_id)">Delete</button>
+                  </li>
+                }
+              </ul>
+            } @else {
+              <p class="muted">No documents uploaded yet.</p>
+            }
+          </div>
+        </section>
+
+        <section class="card result-card">
+          <h2 class="card-title">Ask about your documents</h2>
+          <p class="card-subtitle">Answers are grounded only in what you've uploaded above.</p>
+
+          <div class="field">
+            <label for="uploadQuestion">Question</label>
+            <textarea id="uploadQuestion" rows="3" class="textarea" [(ngModel)]="uploadQuestion"></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" (click)="askUploaded()" [disabled]="uploadLoading()">
+              @if (uploadLoading()) {
+                <span class="spinner" aria-hidden="true"></span>
+              }
+              {{ uploadLoading() ? 'Asking…' : 'Ask' }}
+            </button>
+          </div>
+
+          @if (uploadChatResponse(); as response) {
+            <div class="result-header" style="margin-top: 1.25rem;">
+              <h3 class="section-title">Answer</h3>
+              <span class="badge" [class.badge-warn]="response.refused" [class.badge-ok]="!response.refused">
+                {{ response.refused ? 'Refused' : 'Answered' }}
+              </span>
+            </div>
+            <p class="answer-text">{{ response.answer }}</p>
+            <div class="subsection">
+              <h3 class="section-title">Sources</h3>
+              @if (response.citations.length > 0) {
+                <ul class="chip-list">
+                  @for (citation of response.citations; track citation.chunk_id) {
+                    <li class="chip">{{ citation.chunk_id }}</li>
+                  }
+                </ul>
+              } @else {
+                <p class="muted">No citations returned.</p>
+              }
+            </div>
+          } @else {
+            <div class="empty-state">
+              <p class="empty-title">No results yet</p>
+              <p class="empty-subtitle">Upload a document, then ask a question about it.</p>
+            </div>
+          }
+        </section>
+      </div>
+      }
     </main>
 
     <footer class="page-footer">

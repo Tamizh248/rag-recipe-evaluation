@@ -31,6 +31,11 @@ class Settings(BaseSettings):
     current_chunk_size: int = 250
     current_chunk_overlap: int = 50
 
+    # Generic uploaded-document chunker
+    upload_chunk_size: int = 800
+    upload_chunk_overlap: int = 150
+    upload_max_file_size_mb: int = 20
+
     # CORS
     cors_origins: str = "http://localhost:4200"
 
