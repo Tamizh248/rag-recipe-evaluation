@@ -1,0 +1,72 @@
+{
+  "trace_id": "da8b0cc9071b4da68143a7d473878020",
+  "original": {
+    "trace_id": "da8b0cc9071b4da68143a7d473878020",
+    "timestamp": "2026-09-28T10:34:16.633683+00:00",
+    "prompt_version": "grounding-v1",
+    "question": "Can I replace the walnuts in the Cinnamon Raisin Walnut Sourdough with a different nut?",
+    "strategy": "structure-aware",
+    "dietary_tag_filters": [],
+    "retrieved": [
+      {
+        "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_allergens_003",
+        "score": 0.03252247488101534,
+        "recipe_id": "cinnamon_raisin_walnut_800g",
+        "section": "allergens",
+        "text": "Recipe: Cinnamon Raisin Walnut Sourdough (800g)\nAllergens:\nContains gluten (wheat) and tree nuts (walnuts). Contains no dairy or egg."
+      },
+      {
+        "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_method_002",
+        "score": 0.032018442622950824,
+        "recipe_id": "cinnamon_raisin_walnut_800g",
+        "section": "method",
+        "text": "Recipe: Cinnamon Raisin Walnut Sourdough (800g)\nMethod:\n1. Mix the bread flour, water, and active sourdough starter into a shaggy dough and rest (autolyse) for 30 minutes.\n2. Add the fine sea salt and honey, and mix until the dough is smooth and moderately developed.\n3. Bulk ferment for 4 hours at room temperature with a stretch-and-fold every 45 minutes.\n4. During the second fold, laminate the dough out into a thin rectangle and scatter the raisins, chopped walnuts, and ground cinnamon evenly over the surface, then roll and fold the dough to distribute the mix-ins.\n5. Continue bulk fermentation until the dough is domed and airy, then shape into a batard and place in a floured banneton.\n6. Cold proof in the refrigerator for 10 to 12 hours.\n7. Bake in a preheated Dutch oven at 230C (450F), covered for 20 minutes and uncovered for 15-20 minutes until deep golden brown.\n8. Cool on a wire rack for at least 1 hour before slicing, as the caramelized honey and raisins retain heat."
+      },
+      {
+        "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_ingredients_001",
+        "score": 0.03200204813108039,
+        "recipe_id": "cinnamon_raisin_walnut_800g",
+        "section": "ingredients",
+        "text": "Recipe: Cinnamon Raisin Walnut Sourdough (800g)\nIngredients:\nIngredient | Weight | Baker's Percentage\nBread Flour | 500g | 100%\nWater | 350g | 70%\nFine Sea Salt | 10g | 2%\nActive Sourdough Starter | 100g | 20%\nRaisins | 100g | 20%\nWalnuts (chopped) | 75g | 15%\nGround Cinnamon | 5g | 1%\nHoney | 30g | 6%"
+      },
+      {
+        "chunk_id": "cinnamon_raisin_walnut_800g_structure_aware_title_000",
+        "score": 0.03149801587301587,
+        "recipe_id": "cinnamon_raisin_walnut_800g",
+        "section": "title",
+        "text": "Recipe: Cinnamon Raisin Walnut Sourdough (800g)\nYields approximately 1170g of dough, enough for one 800g pan loaf."
+      },
+      {
+        "chunk_id": "sourdough_country_2kg_structure_aware_allergens_003",
+        "score": 0.029437229437229435,
+        "recipe_id": "sourdough_country_2kg",
+        "section": "allergens",
+        "text": "Recipe: Sourdough Country Loaf (2kg)\nAllergens:\nContains gluten (wheat). Produced in a facility that also processes tree nuts. Contains no dairy, egg, or soy."
+      }
+    ],
+    "model_provider": "local",
+    "model_name": "claude-sonnet-5",
+    "refused_pre_llm": false,
+    "llm_called": true,
+    "prompt": "You are a recipe assistant. Answer the question using ONLY the supplied context below.\n\nRules:\n- Use ONLY the supplied context. Do not use external knowledge.\n- Do not guess. Do not invent quantities. Do not infer missing nutritional information.\n- Every factual claim in your answer must have a citation.\n- Every citation must refer to a real chunk_id from the context below.\n- If the context does not contain enough information to answer the question, refuse to answer.\n\nRespond with ONLY a single JSON object, no other text, matching exactly this schema:\n{\"answerable\": true or false, \"answer\": \"<answer text>\", \"citations\": [{\"chunk_id\": \"<chunk_id from context>\"}]}\n\nIf you cannot answer from the context, respond with exactly:\n{\"answerable\": false, \"answer\": \"I cannot answer this from the provided recipes.\", \"citations\": []}\n\n\nCONTEXT:\n[chunk_id: cinnamon_raisin_walnut_800g_structure_aware_allergens_003]\nRecipe: Cinnamon Raisin Walnut Sourdough (800g)\nAllergens:\nContains gluten (wheat) and tree nuts (walnuts). Contains no dairy or egg.\n\n---\n\n[chunk_id: cinnamon_raisin_walnut_800g_structure_aware_method_002]\nRecipe: Cinnamon Raisin Walnut Sourdough (800g)\nMethod:\n1. Mix the bread flour, water, and active sourdough starter into a shaggy dough and rest (autolyse) for 30 minutes.\n2. Add the fine sea salt and honey, and mix until the dough is smooth and moderately developed.\n3. Bulk ferment for 4 hours at room temperature with a stretch-and-fold every 45 minutes.\n4. During the second fold, laminate the dough out into a thin rectangle and scatter the raisins, chopped walnuts, and ground cinnamon evenly over the surface, then roll and fold the dough to distribute the mix-ins.\n5. Continue bulk fermentation until the dough is domed and airy, then shape into a batard and place in a floured banneton.\n6. Cold proof in the refrigerator for 10 to 12 hours.\n7. Bake in a preheated Dutch oven at 230C (450F), covered for 20 minutes and uncovered for 15-20 minutes until deep golden brown.\n8. Cool on a wire rack for at least 1 hour before slicing, as the caramelized honey and raisins retain heat.\n\n---\n\n[chunk_id: cinnamon_raisin_walnut_800g_structure_aware_ingredients_001]\nRecipe: Cinnamon Raisin Walnut Sourdough (800g)\nIngredients:\nIngredient | Weight | Baker's Percentage\nBread Flour | 500g | 100%\nWater | 350g | 70%\nFine Sea Salt | 10g | 2%\nActive Sourdough Starter | 100g | 20%\nRaisins | 100g | 20%\nWalnuts (chopped) | 75g | 15%\nGround Cinnamon | 5g | 1%\nHoney | 30g | 6%\n\n---\n\n[chunk_id: cinnamon_raisin_walnut_800g_structure_aware_title_000]\nRecipe: Cinnamon Raisin Walnut Sourdough (800g)\nYields approximately 1170g of dough, enough for one 800g pan loaf.\n\n---\n\n[chunk_id: sourdough_country_2kg_structure_aware_allergens_003]\nRecipe: Sourdough Country Loaf (2kg)\nAllergens:\nContains gluten (wheat). Produced in a facility that also processes tree nuts. Contains no dairy, egg, or soy.\n\nQUESTION:\nCan I replace the walnuts in the Cinnamon Raisin Walnut Sourdough with a different nut?\n",
+    "raw_llm_output": "{\"answerable\": true, \"answer\": \"Contains gluten (wheat) and tree nuts (walnuts). Contains no dairy or egg.\", \"citations\": [{\"chunk_id\": \"cinnamon_raisin_walnut_800g_structure_aware_allergens_003\"}]}",
+    "parse_retried": false,
+    "answerable": true,
+    "answer": "Contains gluten (wheat) and tree nuts (walnuts). Contains no dairy or egg.",
+    "citations": [
+      "cinnamon_raisin_walnut_800g_structure_aware_allergens_003"
+    ],
+    "final_refused": false
+  },
+  "replayed": {
+    "replayed_refused_pre_llm": false,
+    "replayed_raw_output": "{\"answerable\": true, \"answer\": \"Contains gluten (wheat) and tree nuts (walnuts). Contains no dairy or egg.\", \"citations\": [{\"chunk_id\": \"cinnamon_raisin_walnut_800g_structure_aware_allergens_003\"}]}",
+    "replayed_answer": "Contains gluten (wheat) and tree nuts (walnuts). Contains no dairy or egg.",
+    "replayed_answerable": true,
+    "replayed_citations": [
+      "cinnamon_raisin_walnut_800g_structure_aware_allergens_003"
+    ],
+    "llm_replayed": true,
+    "raw_output_matches_original": true
+  }
+}

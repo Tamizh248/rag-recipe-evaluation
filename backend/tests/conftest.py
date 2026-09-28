@@ -8,6 +8,7 @@ import pytest
 from app.chunking.current_chunker import CurrentChunker
 from app.chunking.structure_aware_chunker import StructureAwareChunker
 from app.core.config import get_settings
+from app.core.tracing import TraceLogger
 from app.embeddings.sentence_transformer import EmbeddingModel
 from app.generation.llm import LocalExtractiveProvider
 from app.retrieval.retriever import Retriever
@@ -49,5 +50,16 @@ def retriever(store, embedding_model):
 
 
 @pytest.fixture(scope="session")
-def chat_service(retriever, settings):
-    return ChatService(retriever, LocalExtractiveProvider(), top_k=settings.top_k)
+def chat_service(retriever, settings, tmp_path_factory):
+    # A test-local trace log, never the production evaluation/week5/traces.jsonl -
+    # otherwise every pytest run would mix synthetic test traffic into the real
+    # Week-5 trace sample.
+    trace_logger = TraceLogger(tmp_path_factory.mktemp("traces") / "test_traces.jsonl")
+    return ChatService(
+        retriever,
+        LocalExtractiveProvider(),
+        top_k=settings.top_k,
+        model_provider="local",
+        model_name="local-extractive",
+        trace_logger=trace_logger,
+    )

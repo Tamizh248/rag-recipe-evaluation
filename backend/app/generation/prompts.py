@@ -1,5 +1,11 @@
 from app.vectorstore.chroma_store import RetrievedChunk
 
+# Bumped whenever GROUNDING_INSTRUCTIONS' wording changes, so a trace (see
+# app/core/tracing.py) records which prompt actually produced its answer -
+# traces from before a prompt change are not silently treated as comparable
+# to traces from after it.
+PROMPT_VERSION = "grounding-v1"
+
 GROUNDING_INSTRUCTIONS = """You are a recipe assistant. Answer the question using ONLY the supplied context below.
 
 Rules:

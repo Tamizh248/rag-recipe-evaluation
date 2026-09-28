@@ -29,7 +29,13 @@ def get_search_service() -> SearchService:
 def get_chat_service() -> ChatService:
     settings = get_settings()
     provider = get_llm_provider(settings.llm_provider, settings.llm_api_key, settings.llm_model)
-    return ChatService(get_retriever(), provider, top_k=settings.top_k)
+    return ChatService(
+        get_retriever(),
+        provider,
+        top_k=settings.top_k,
+        model_provider=settings.llm_provider,
+        model_name=settings.llm_model,
+    )
 
 
 @lru_cache
