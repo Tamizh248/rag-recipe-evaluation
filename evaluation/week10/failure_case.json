@@ -1,0 +1,11 @@
+{
+  "case_id": "S03",
+  "recipe_id": "brioche_sourdough_900g",
+  "ingredient": "whole milk",
+  "diet": "vegan",
+  "single_agent_answer": "Use oat milk or almond milk instead of whole milk. Contains dairy, eggs, gluten, tree-nuts.",
+  "orchestrator_answer": "Use oat milk or almond milk instead of whole milk. Contains dairy, eggs, gluten, tree-nuts. NOTE: the independent allergen-verification worker failed (allergen_worker returned 500 for ingredient='oat milk or almond milk'); this allergen line is from the substitution worker only, not independently confirmed.",
+  "orchestrator_behavior": "degraded_with_caveat",
+  "orchestrator_judge_pass": false,
+  "orchestrator_judge_verdict": "heuristic: allergens field mentions 'dairy', which disqualifies diet 'vegan'"
+}

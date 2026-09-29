@@ -1,0 +1,156 @@
+{
+  "single_agent": [
+    {
+      "id": "S01",
+      "latency_s": 0.08016999997198582,
+      "tokens": 403,
+      "pass": false,
+      "answer": "Use vegan butter or coconut oil instead of unsalted butter. Contains dairy, eggs, gluten."
+    },
+    {
+      "id": "S03",
+      "latency_s": 0.05247360002249479,
+      "tokens": 381,
+      "pass": false,
+      "answer": "Use oat milk or almond milk instead of whole milk. Contains dairy, eggs, gluten, tree-nuts."
+    },
+    {
+      "id": "S07",
+      "latency_s": 0.052874499931931496,
+      "tokens": 415,
+      "pass": true,
+      "answer": "Use maple syrup or agave syrup instead of honey. Contains gluten, tree-nuts."
+    },
+    {
+      "id": "S08",
+      "latency_s": 0.05596490006428212,
+      "tokens": 417,
+      "pass": true,
+      "answer": "Use toasted sunflower seeds, or omit entirely instead of walnuts (chopped). Contains gluten."
+    },
+    {
+      "id": "S09",
+      "latency_s": 0.05387850000988692,
+      "tokens": 415,
+      "pass": true,
+      "answer": "Use a 1:1 gluten-free bread flour blend with added xanthan gum instead of bread flour. Contains no major allergens on file for the adapted recipe."
+    },
+    {
+      "id": "S13",
+      "latency_s": 0.04815230006352067,
+      "tokens": 25,
+      "pass": true,
+      "answer": "no ingredient matched 'ground cinnamon' in 'brioche_sourdough_900g': not in this recipe"
+    },
+    {
+      "id": "S15",
+      "latency_s": 0.07734459999483079,
+      "tokens": 20,
+      "pass": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet."
+    },
+    {
+      "id": "S21",
+      "latency_s": 0.08448790002148598,
+      "tokens": 20,
+      "pass": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet."
+    },
+    {
+      "id": "S25",
+      "latency_s": 0.06380259990692139,
+      "tokens": 26,
+      "pass": true,
+      "answer": "Unknown diet 'nonsense-diet'. Valid diets: vegan, dairy-free, egg-free, nut-free, gluten-free."
+    },
+    {
+      "id": "S26",
+      "latency_s": 0.04815050004981458,
+      "tokens": 18,
+      "pass": true,
+      "answer": "No recipe found with recipe_id 'this_recipe_does_not_exist'."
+    }
+  ],
+  "orchestrator": [
+    {
+      "id": "S01",
+      "latency_s": 0.052909100078977644,
+      "tokens": 815,
+      "pass": false,
+      "answer": "Use vegan butter or coconut oil instead of unsalted butter. Contains dairy, eggs, gluten.",
+      "worker_failure_behavior": "ok"
+    },
+    {
+      "id": "S03",
+      "latency_s": 0.04796060000080615,
+      "tokens": 779,
+      "pass": false,
+      "answer": "Use oat milk or almond milk instead of whole milk. Contains dairy, eggs, gluten, tree-nuts. NOTE: the independent allergen-verification worker failed (allergen_worker returned 500 for ingredient='oat milk or almond milk'); this allergen line is from the substitution worker only, not independently confirmed.",
+      "worker_failure_behavior": "degraded_with_caveat"
+    },
+    {
+      "id": "S07",
+      "latency_s": 0.05014760000631213,
+      "tokens": 837,
+      "pass": true,
+      "answer": "Use maple syrup or agave syrup instead of honey. Contains gluten, tree-nuts.",
+      "worker_failure_behavior": "ok"
+    },
+    {
+      "id": "S08",
+      "latency_s": 0.0681085999822244,
+      "tokens": 842,
+      "pass": true,
+      "answer": "Use toasted sunflower seeds, or omit entirely instead of walnuts (chopped). Contains gluten.",
+      "worker_failure_behavior": "ok"
+    },
+    {
+      "id": "S09",
+      "latency_s": 0.05085120000876486,
+      "tokens": 847,
+      "pass": true,
+      "answer": "Use a 1:1 gluten-free bread flour blend with added xanthan gum instead of bread flour. Contains no major allergens on file for the adapted recipe.",
+      "worker_failure_behavior": "ok"
+    },
+    {
+      "id": "S13",
+      "latency_s": 0.04992509994190186,
+      "tokens": 47,
+      "pass": true,
+      "answer": "no ingredient matched 'ground cinnamon' in 'brioche_sourdough_900g': not in this recipe",
+      "worker_failure_behavior": null
+    },
+    {
+      "id": "S15",
+      "latency_s": 0.08021369995549321,
+      "tokens": 43,
+      "pass": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "worker_failure_behavior": null
+    },
+    {
+      "id": "S21",
+      "latency_s": 0.08053659996949136,
+      "tokens": 41,
+      "pass": true,
+      "answer": "No verified substitute is on file for this ingredient under this diet.",
+      "worker_failure_behavior": null
+    },
+    {
+      "id": "S25",
+      "latency_s": 0.04724689992144704,
+      "tokens": 49,
+      "pass": true,
+      "answer": "Unknown diet 'nonsense-diet'. Valid diets: vegan, dairy-free, egg-free, nut-free, gluten-free.",
+      "worker_failure_behavior": null
+    },
+    {
+      "id": "S26",
+      "latency_s": 0.05020719999447465,
+      "tokens": 40,
+      "pass": true,
+      "answer": "No recipe found with recipe_id 'this_recipe_does_not_exist'.",
+      "worker_failure_behavior": null
+    }
+  ]
+}
