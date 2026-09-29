@@ -1,0 +1,6 @@
+{
+  "servers": [
+    {"name": "recipe_server", "command": "python", "args": ["mcp_servers/recipe_server.py"]},
+    {"name": "ingredient_db_server", "command": "python", "args": ["mcp_servers/ingredient_db_server.py"]}
+  ]
+}

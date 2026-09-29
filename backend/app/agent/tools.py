@@ -1,25 +1,17 @@
-"""The three tools the agent (and, identically, the fixed workflow) can
-call. Each wraps existing, already-deterministic/grounded services - no
-tool lets the LLM invent a chunk, a substitute, or an allergen. Same
-single-string-argument, no-framework style as the sample rag-poc project's
-app/agent/tools.py.
+"""The 3 tool IMPLEMENTATIONS backing mcp_servers/recipe_server.py (Week 9)
+- each wraps existing, already-deterministic/grounded services, so no tool
+lets a model invent a chunk, a substitute, or an allergen.
+
+As of Week 9, the agent (app/agent/agent.py) and workflow no longer import
+this module or call these functions in-process - they go through the real
+MCP protocol instead (app/agent/mcp_client.py), and recipe_server.py is the
+only caller of the three functions below. Kept as a separate module from
+the MCP server file so the actual retrieval/substitution/allergen logic
+isn't duplicated if a second server ever needs it.
 """
 
-from collections.abc import Callable
-from dataclasses import dataclass
-
 from app.api.deps import get_retriever, get_substitution_service
-from app.substitution.tables import Allergen, Diet, allergens_for
-
-
-@dataclass
-class Tool:
-    name: str
-    description: str
-    func: Callable[[str], dict]
-
-    def invoke(self, argument: str) -> dict:
-        return self.func(argument)
+from app.substitution.tables import allergens_for
 
 
 def _search_recipes(query: str) -> dict:
@@ -75,35 +67,3 @@ def _get_allergen_profile(argument: str) -> dict:
             "note": "No allergen data on file for this ingredient - this is not a claim that it's allergen-free.",
         }
     return {"ingredient": ingredient, "allergens": [a.value for a in allergens]}
-
-
-TOOLS = [
-    Tool(
-        name="search_recipes",
-        description=(
-            "Search the recipe corpus for passages relevant to a free-text query. "
-            "Runs hybrid BM25 + dense retrieval. Argument: the search query."
-        ),
-        func=_search_recipes,
-    ),
-    Tool(
-        name="substitute_ingredient",
-        description=(
-            "Look up a diet-appropriate substitute for exactly one ingredient in "
-            "exactly one recipe - nothing else. Argument: "
-            '"<recipe_id>, <ingredient>, <diet>", e.g. "brioche_sourdough_900g, whole milk, vegan". '
-            "diet must be one of: " + ", ".join(d.value for d in Diet) + "."
-        ),
-        func=_substitute_ingredient,
-    ),
-    Tool(
-        name="get_allergen_profile",
-        description=(
-            "Look up known allergens for exactly one ingredient - nothing else, "
-            "and independent of any specific recipe. Argument: the ingredient name. "
-            "Returns allergens from: " + ", ".join(a.value for a in Allergen) + "."
-        ),
-        func=_get_allergen_profile,
-    ),
-]
-TOOLS_BY_NAME = {tool.name: tool for tool in TOOLS}

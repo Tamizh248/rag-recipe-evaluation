@@ -1,0 +1,19 @@
+=== Config diff: adding server two (mcp_config.json) ===
+BEFORE:
+{
+  "servers": [
+    {"name": "recipe_server", "command": "python", "args": ["mcp_servers/recipe_server.py"]}
+  ]
+}
+
+AFTER (current, committed):
+{
+  "servers": [
+    {"name": "recipe_server", "command": "python", "args": ["mcp_servers/recipe_server.py"]},
+    {"name": "ingredient_db_server", "command": "python", "args": ["mcp_servers/ingredient_db_server.py"]}
+  ]
+}
+
+=== agent.py diff: server-1-only snapshot vs current ===
+DIFF EXIT CODE: 0
+RESULT: agent.py is BYTE-IDENTICAL between server-1-only config and server-1+2 config. Zero lines changed.

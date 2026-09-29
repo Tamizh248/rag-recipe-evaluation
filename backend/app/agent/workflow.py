@@ -14,10 +14,10 @@ the agent's decide loop (agent.py's cascade) can do that.
 
 import logging
 
-from app.agent.agent import INSUFFICIENT_EVIDENCE_ANSWER, _compose_final_answer, _has_sufficient_evidence, _tool_argument_string
+from app.agent.agent import INSUFFICIENT_EVIDENCE_ANSWER, _compose_final_answer, _has_sufficient_evidence
 from app.agent.intent import detect_diets, detect_target_ingredient, mentions_allergen_intent
+from app.agent.mcp_client import get_mcp_client
 from app.agent.state import AgentState
-from app.agent.tools import TOOLS_BY_NAME
 from app.core.config import get_settings
 
 logger = logging.getLogger(__name__)
@@ -47,7 +47,7 @@ def run_workflow(question: str) -> dict:
     state = AgentState(user_query=question)
 
     logger.info("[WORKFLOW] Step 1: search_recipes")
-    search_result = TOOLS_BY_NAME["search_recipes"].invoke(question)
+    search_result = get_mcp_client().call_tool("search_recipes", {"query": question})
     state.tool_calls += 1
     state.retrieval_attempts += 1
     state.previous_actions.append(("search_recipes", str({"query": question})))
@@ -72,8 +72,7 @@ def run_workflow(question: str) -> dict:
     if step_2:
         tool_name, arguments = step_2
         logger.info("[WORKFLOW] Step 2 (fixed rule matched): %s(%s)", tool_name, arguments)
-        argument_str = _tool_argument_string(tool_name, arguments)
-        result = TOOLS_BY_NAME[tool_name].invoke(argument_str)
+        result = get_mcp_client().call_tool(tool_name, arguments)
         state.tool_calls += 1
         state.record_step(tool_name, arguments, result)
     else:

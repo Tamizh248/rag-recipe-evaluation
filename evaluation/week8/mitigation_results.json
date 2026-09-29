@@ -1,0 +1,124 @@
+{
+  "top_mode": "step_inefficiency",
+  "top_mode_before": 4,
+  "top_mode_after": 0,
+  "before_counts": {
+    "tool_bypass": 1,
+    "wrong_tool_choice": 0,
+    "argument_hallucination": 2,
+    "repeated_action_stuck": 0,
+    "gave_up_too_early": 0,
+    "fabrication_without_evidence": 0,
+    "step_inefficiency": 4
+  },
+  "after_counts": {
+    "tool_bypass": 1,
+    "wrong_tool_choice": 0,
+    "argument_hallucination": 2,
+    "repeated_action_stuck": 0,
+    "gave_up_too_early": 0,
+    "fabrication_without_evidence": 0,
+    "step_inefficiency": 0
+  },
+  "before_cost": {
+    "tokens_p50": 45.5,
+    "tokens_max": 227,
+    "cost_usd_p50": 0.0,
+    "cost_usd_max": 0.0,
+    "per_case": {
+      "T01": {
+        "tokens": 227,
+        "cost_usd": 0.0
+      },
+      "T02": {
+        "tokens": 10,
+        "cost_usd": 0.0
+      },
+      "T03": {
+        "tokens": 39,
+        "cost_usd": 0.0
+      },
+      "T04": {
+        "tokens": 55,
+        "cost_usd": 0.0
+      },
+      "T05": {
+        "tokens": 51,
+        "cost_usd": 0.0
+      },
+      "T06": {
+        "tokens": 51,
+        "cost_usd": 0.0
+      },
+      "T07": {
+        "tokens": 72,
+        "cost_usd": 0.0
+      },
+      "T08": {
+        "tokens": 33,
+        "cost_usd": 0.0
+      },
+      "T09": {
+        "tokens": 40,
+        "cost_usd": 0.0
+      },
+      "T10": {
+        "tokens": 0,
+        "cost_usd": 0.0
+      }
+    }
+  },
+  "after_cost": {
+    "tokens_p50": 25.5,
+    "tokens_max": 227,
+    "cost_usd_p50": 0.0,
+    "cost_usd_max": 0.0,
+    "per_case": {
+      "T01": {
+        "tokens": 227,
+        "cost_usd": 0.0
+      },
+      "T02": {
+        "tokens": 10,
+        "cost_usd": 0.0
+      },
+      "T03": {
+        "tokens": 16,
+        "cost_usd": 0.0
+      },
+      "T04": {
+        "tokens": 32,
+        "cost_usd": 0.0
+      },
+      "T05": {
+        "tokens": 51,
+        "cost_usd": 0.0
+      },
+      "T06": {
+        "tokens": 51,
+        "cost_usd": 0.0
+      },
+      "T07": {
+        "tokens": 72,
+        "cost_usd": 0.0
+      },
+      "T08": {
+        "tokens": 19,
+        "cost_usd": 0.0
+      },
+      "T09": {
+        "tokens": 17,
+        "cost_usd": 0.0
+      },
+      "T10": {
+        "tokens": 0,
+        "cost_usd": 0.0
+      }
+    }
+  },
+  "before_outcome_pass_rate": 1.0,
+  "after_outcome_pass_rate": 1.0,
+  "before_trajectory_pass_rate": 0.9,
+  "after_trajectory_pass_rate": 0.9,
+  "regressed_or_new": []
+}

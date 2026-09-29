@@ -1,22 +1,21 @@
-"""app.agent.tools calls app.api.deps.get_retriever()/get_substitution_service()
-directly (same production-coupled style as the sample rag-poc project's own
-app/agent/tools.py) - monkeypatched here to the session's ISOLATED test
-store/retriever/substitution_service fixtures, so these tests never touch
-the real backend/data/chroma directory.
+"""As of Week 9, the agent talks to its tools over the real MCP protocol
+(app/agent/mcp_client.py spawns backend/mcp_servers/recipe_server.py as a
+real subprocess - see backend/mcp_config.json). That subprocess is a
+separate Python process with its own memory, so it cannot be monkeypatched
+onto this test session's isolated store/retriever fixtures the way
+in-process calls could before Week 9.
+
+These are therefore integration tests against the REAL backend/data/chroma
+directory (already ingested with the same 6 known recipes - see
+backend/scripts/ingest_recipes.py) - same philosophy as the sample rag-poc
+project's own tests/test_e2e.py ("real chunking, real embeddings, ... no
+mocks") for exactly this kind of process-boundary-crossing integration
+point.
 """
 
-import pytest
-
-from app.agent import tools as agent_tools
 from app.agent.agent import run_agent_with_state
 from app.agent.safety import MAX_STEPS
 from app.agent.workflow import run_workflow
-
-
-@pytest.fixture(autouse=True)
-def _isolated_agent_tools(monkeypatch, retriever, substitution_service):
-    monkeypatch.setattr(agent_tools, "get_retriever", lambda: retriever)
-    monkeypatch.setattr(agent_tools, "get_substitution_service", lambda: substitution_service)
 
 
 def test_agent_answers_pure_fact_lookup_with_search_only():

@@ -1,0 +1,119 @@
+[
+  {
+    "direction": "client->server",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "initialize",
+      "params": {
+        "protocolVersion": "2025-06-18",
+        "capabilities": {},
+        "clientInfo": {
+          "name": "week9-wire-capture",
+          "version": "0.1"
+        }
+      }
+    }
+  },
+  {
+    "direction": "server->client",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "protocolVersion": "2025-06-18",
+        "capabilities": {
+          "experimental": {},
+          "prompts": {
+            "listChanged": false
+          },
+          "resources": {
+            "subscribe": false,
+            "listChanged": false
+          },
+          "tools": {
+            "listChanged": false
+          }
+        },
+        "serverInfo": {
+          "name": "ingredient_db_server",
+          "version": "1.30.0"
+        }
+      }
+    }
+  },
+  {
+    "direction": "client->server",
+    "message": {
+      "jsonrpc": "2.0",
+      "method": "notifications/initialized"
+    }
+  },
+  {
+    "direction": "client->server",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "tools/list",
+      "params": {}
+    }
+  },
+  {
+    "direction": "server->client",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "tools": [
+          {
+            "name": "lookup_ingredient",
+            "description": "Look up one ingredient's allergen flags and nutrition per 100g by\nname. Argument: the ingredient name.",
+            "inputSchema": {
+              "properties": {
+                "name": {
+                  "title": "Name",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "title": "lookup_ingredientArguments",
+              "type": "object"
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "direction": "client->server",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "tools/call",
+      "params": {
+        "name": "lookup_ingredient",
+        "arguments": {
+          "name": "walnuts"
+        }
+      }
+    }
+  },
+  {
+    "direction": "server->client",
+    "message": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"ingredient\": \"walnuts\",\n  \"allergens\": [\n    \"tree-nuts\"\n  ],\n  \"nutrition_per_100g\": {\n    \"calories\": 654,\n    \"protein_g\": 15.2,\n    \"fat_g\": 65.2,\n    \"carbs_g\": 13.7\n  }\n}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  }
+]

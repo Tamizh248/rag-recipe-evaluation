@@ -1,5 +1,5 @@
 metric,agent,workflow
 pass_rate,1.0,0.7
-p50_latency_ms,18.984500027727336,17.47755001997575
-total_tokens,557,378
+p50_latency_ms,24.51490005478263,23.07920000748709
+total_tokens,474,378
 cost_per_request_usd,0.0,0.0

@@ -1,0 +1,211 @@
+{
+  "per_case": [
+    {
+      "id": "T01",
+      "trajectory_passed": true,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes"
+      ],
+      "modes": [],
+      "tokens": 227,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "T02",
+      "trajectory_passed": true,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes",
+        "get_allergen_profile"
+      ],
+      "modes": [],
+      "tokens": 10,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "T03",
+      "trajectory_passed": true,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes",
+        "substitute_ingredient"
+      ],
+      "modes": [],
+      "tokens": 16,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "T04",
+      "trajectory_passed": true,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes",
+        "substitute_ingredient"
+      ],
+      "modes": [],
+      "tokens": 32,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "T05",
+      "trajectory_passed": true,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes",
+        "substitute_ingredient",
+        "get_allergen_profile",
+        "substitute_ingredient"
+      ],
+      "modes": [
+        "argument_hallucination"
+      ],
+      "tokens": 51,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "T06",
+      "trajectory_passed": true,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes",
+        "substitute_ingredient",
+        "get_allergen_profile",
+        "substitute_ingredient"
+      ],
+      "modes": [
+        "argument_hallucination"
+      ],
+      "tokens": 51,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "T07",
+      "trajectory_passed": false,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes"
+      ],
+      "modes": [
+        "tool_bypass"
+      ],
+      "tokens": 72,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "T08",
+      "trajectory_passed": true,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes",
+        "substitute_ingredient"
+      ],
+      "modes": [],
+      "tokens": 19,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "T09",
+      "trajectory_passed": true,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes",
+        "substitute_ingredient"
+      ],
+      "modes": [],
+      "tokens": 17,
+      "cost_usd": 0.0
+    },
+    {
+      "id": "T10",
+      "trajectory_passed": true,
+      "outcome_pass": true,
+      "tools": [
+        "search_recipes"
+      ],
+      "modes": [],
+      "tokens": 0,
+      "cost_usd": 0.0
+    }
+  ],
+  "tool_choice_accuracy": 1.0,
+  "argument_validity_rate": 0.9047619047619048,
+  "step_efficiency": {
+    "per_case": {
+      "T01": 1.0,
+      "T02": 1.0,
+      "T03": 1.0,
+      "T04": 1.0,
+      "T05": 1.0,
+      "T06": 1.0,
+      "T07": 0.5,
+      "T08": 1.0,
+      "T09": 1.0,
+      "T10": 1.0
+    },
+    "mean": 0.95
+  },
+  "cost_distribution": {
+    "tokens_p50": 25.5,
+    "tokens_max": 227,
+    "cost_usd_p50": 0.0,
+    "cost_usd_max": 0.0,
+    "per_case": {
+      "T01": {
+        "tokens": 227,
+        "cost_usd": 0.0
+      },
+      "T02": {
+        "tokens": 10,
+        "cost_usd": 0.0
+      },
+      "T03": {
+        "tokens": 16,
+        "cost_usd": 0.0
+      },
+      "T04": {
+        "tokens": 32,
+        "cost_usd": 0.0
+      },
+      "T05": {
+        "tokens": 51,
+        "cost_usd": 0.0
+      },
+      "T06": {
+        "tokens": 51,
+        "cost_usd": 0.0
+      },
+      "T07": {
+        "tokens": 72,
+        "cost_usd": 0.0
+      },
+      "T08": {
+        "tokens": 19,
+        "cost_usd": 0.0
+      },
+      "T09": {
+        "tokens": 17,
+        "cost_usd": 0.0
+      },
+      "T10": {
+        "tokens": 0,
+        "cost_usd": 0.0
+      }
+    }
+  },
+  "outcome_pass_rate": 1.0,
+  "trajectory_pass_rate": 0.9,
+  "gap": 0.09999999999999998,
+  "gap_case_ids": [
+    "T07"
+  ],
+  "mode_counts": {
+    "tool_bypass": 1,
+    "wrong_tool_choice": 0,
+    "argument_hallucination": 2,
+    "repeated_action_stuck": 0,
+    "gave_up_too_early": 0,
+    "fabrication_without_evidence": 0,
+    "step_inefficiency": 0
+  }
+}

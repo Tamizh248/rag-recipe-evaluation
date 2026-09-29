@@ -86,9 +86,17 @@ class SubstitutionService:
         ingredient_names = _parse_ingredient_names(ingredients_chunk.text)
         target = ingredient.strip().lower()
         if target not in ingredient_names:
-            return self._to_response(
-                _refusal(f"{recipe_id!r} does not list {ingredient!r} as an ingredient."), retrieved_ids
-            )
+            # Week 9 rewrite: a blunt "not listed" forced the caller (model
+            # or user) to already know this recipe's exact ingredient-table
+            # spelling ("eggs (whole)", not "eggs") - now it suggests the
+            # real entry a substring match finds, same shape as the task's
+            # own example ("no ingredient matched X: try Y", not "Error 3").
+            suggestion = next((name for name in ingredient_names if target in name or name in target), None)
+            if suggestion:
+                message = f"no ingredient matched {ingredient!r} in {recipe_id!r}: try {suggestion!r}"
+            else:
+                message = f"no ingredient matched {ingredient!r} in {recipe_id!r}: not in this recipe"
+            return self._to_response(_refusal(message), retrieved_ids)
 
         try:
             Diet(diet)
