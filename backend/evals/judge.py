@@ -21,6 +21,7 @@ needed here.
 from app.core.config import get_settings
 from app.generation.llm import AnthropicProvider
 from app.models.substitution import SubstitutionResponse
+from app.substitution.tables import DIET_DISQUALIFYING_ALLERGENS
 
 JUDGE_PROMPT = """You are validating a recipe assistant's response to an ingredient-substitution request.
 
@@ -41,13 +42,6 @@ Reply with exactly one line: PASS or FAIL, followed by a dash and a one-sentence
 # This is a real blind spot, not a strawman - it will genuinely misjudge a
 # multi-allergen recipe where an untouched ingredient (not the one being
 # substituted) is the source of a keyword match. Read judge_v1.txt.
-_DIET_DISQUALIFYING_KEYWORDS: dict[str, list[str]] = {
-    "vegan": ["dairy", "eggs"],
-    "dairy-free": ["dairy"],
-    "egg-free": ["eggs"],
-    "nut-free": ["tree-nuts"],
-    "gluten-free": ["gluten"],
-}
 
 
 def _heuristic_judge(recipe_id: str, ingredient: str, diet: str, response: SubstitutionResponse) -> tuple[bool, str]:
@@ -58,11 +52,11 @@ def _heuristic_judge(recipe_id: str, ingredient: str, diet: str, response: Subst
         # existed but was missed) - only over-eager substitutions.
         return True, "heuristic: refusals are accepted without further checking"
 
-    disqualifying = _DIET_DISQUALIFYING_KEYWORDS.get(diet, [])
+    disqualifying = DIET_DISQUALIFYING_ALLERGENS.get(diet, [])
     allergens_text = response.allergens.lower()
-    hit = next((kw for kw in disqualifying if kw in allergens_text), None)
+    hit = next((a for a in disqualifying if a.value in allergens_text), None)
     if hit:
-        return False, f"heuristic: allergens field mentions {hit!r}, which disqualifies diet {diet!r}"
+        return False, f"heuristic: allergens field mentions {hit.value!r}, which disqualifies diet {diet!r}"
     return True, "heuristic: no disqualifying allergen keyword found for this diet"
 
 

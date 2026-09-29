@@ -17,6 +17,11 @@ from pathlib import Path
 from app.core.config import BACKEND_DIR
 
 TRACES_PATH = BACKEND_DIR.parent / "evaluation" / "week5" / "traces.jsonl"
+# Deliberately a SEPARATE file from TRACES_PATH: SubstitutionService traces
+# are a different event stream (Week 6+) than the chat traces Week 5's
+# seeded sample was drawn from - sharing one file let a later week's runs
+# silently contaminate the Week-5 corpus (fixed after it happened once).
+SUBSTITUTION_TRACES_PATH = BACKEND_DIR.parent / "evaluation" / "week6" / "substitution_traces.jsonl"
 
 
 @dataclass
@@ -79,6 +84,7 @@ class TraceLogger:
 
 
 _default_logger: TraceLogger | None = None
+_default_substitution_logger: TraceLogger | None = None
 
 
 def get_trace_logger() -> TraceLogger:
@@ -86,6 +92,13 @@ def get_trace_logger() -> TraceLogger:
     if _default_logger is None:
         _default_logger = TraceLogger(TRACES_PATH)
     return _default_logger
+
+
+def get_substitution_trace_logger() -> TraceLogger:
+    global _default_substitution_logger
+    if _default_substitution_logger is None:
+        _default_substitution_logger = TraceLogger(SUBSTITUTION_TRACES_PATH)
+    return _default_substitution_logger
 
 
 def read_traces(path: Path = TRACES_PATH) -> list[dict]:

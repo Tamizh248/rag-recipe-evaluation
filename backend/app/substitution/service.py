@@ -8,7 +8,14 @@ like ChatService (app.services.chat_service).
 
 import re
 
-from app.core.tracing import RetrievedChunkTrace, TraceLogger, TraceRecord, get_trace_logger, new_trace_id, now_iso
+from app.core.tracing import (
+    RetrievedChunkTrace,
+    TraceLogger,
+    TraceRecord,
+    get_substitution_trace_logger,
+    new_trace_id,
+    now_iso,
+)
 from app.generation.llm import LLMProvider
 from app.models.substitution import SubstitutionAnswer, SubstitutionResponse
 from app.substitution.prompts import SUBSTITUTION_PROMPT_VERSION, build_substitution_prompt
@@ -63,7 +70,7 @@ class SubstitutionService:
         self.llm_provider = llm_provider
         self.model_provider = model_provider
         self.model_name = model_name
-        self.trace_logger = trace_logger or get_trace_logger()
+        self.trace_logger = trace_logger or get_substitution_trace_logger()
 
     def substitute(self, recipe_id: str, ingredient: str, diet: str) -> SubstitutionResponse:
         chunks = self.store.get_recipe_chunks("structure_aware", recipe_id)

@@ -63,7 +63,12 @@ SUBSTITUTE_ALLERGENS: dict[str, list[Allergen]] = {
 
 
 def allergens_for(ingredient: str) -> list[Allergen]:
-    return ALLERGEN_PROFILES.get(ingredient.strip().lower(), [])
+    """Checks both the original-ingredient table AND the substitute-text
+    table (get_allergen_profile is a general-purpose tool - the agent's
+    cascade calls it on a previously-suggested SUBSTITUTE just as often as
+    on an original recipe ingredient)."""
+    key = ingredient.strip().lower()
+    return ALLERGEN_PROFILES.get(key) or SUBSTITUTE_ALLERGENS.get(key, [])
 
 
 def allergens_for_substitute(substitute: str) -> list[Allergen]:
@@ -72,3 +77,25 @@ def allergens_for_substitute(substitute: str) -> list[Allergen]:
 
 def find_substitute(ingredient: str, diet: str) -> str | None:
     return SUBSTITUTIONS.get((ingredient.strip().lower(), diet))
+
+
+# Which allergen would disqualify a response from actually satisfying each
+# diet - shared by the Week 6 judge heuristic (evals/judge.py) and the
+# Week 7 agent's cascade detection (app/agent/agent.py), so both use the
+# same definition of "this diet request wasn't really met".
+DIET_DISQUALIFYING_ALLERGENS: dict[str, list[Allergen]] = {
+    Diet.VEGAN.value: [Allergen.DAIRY, Allergen.EGGS],
+    Diet.DAIRY_FREE.value: [Allergen.DAIRY],
+    Diet.EGG_FREE.value: [Allergen.EGGS],
+    Diet.NUT_FREE.value: [Allergen.TREE_NUTS],
+    Diet.GLUTEN_FREE.value: [Allergen.GLUTEN],
+}
+
+# The diet that addresses a stated allergy concern - lets the agent turn
+# "I'm allergic to nuts" into a concrete substitute_ingredient diet value.
+ALLERGEN_TO_DIET: dict[Allergen, str] = {
+    Allergen.TREE_NUTS: Diet.NUT_FREE.value,
+    Allergen.DAIRY: Diet.DAIRY_FREE.value,
+    Allergen.EGGS: Diet.EGG_FREE.value,
+    Allergen.GLUTEN: Diet.GLUTEN_FREE.value,
+}

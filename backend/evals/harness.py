@@ -5,10 +5,41 @@ case, so both scripts agree on what "ran" means.
 """
 
 from dataclasses import dataclass, field
+from pathlib import Path
 
-from app.api.deps import get_chat_service, get_substitution_service
+from app.api.deps import get_retriever, get_substitution_service
+from app.core.config import get_settings
+from app.core.tracing import TraceLogger
+from app.generation.llm import get_llm_provider
+from app.services.chat_service import ChatService
 from evals import assertions
 from evals.cases import CASES, REGRESSION_CASES, RegressionCase, SubstitutionCase
+
+# Regression cases replay real chat questions through a REAL ChatService -
+# but never through app.api.deps.get_chat_service()'s production singleton,
+# which defaults to logging into evaluation/week5/traces.jsonl. That file
+# is a frozen population a seeded sample was already drawn from (see
+# evaluation/week5/sample.json); appending more traces to it here would
+# silently change that population out from under the recorded seed/sample.
+# This harness gets its own isolated trace log instead.
+_REGRESSION_TRACES_PATH = Path(__file__).resolve().parents[2] / "evaluation" / "week6" / "regression_chat_traces.jsonl"
+_regression_chat_service: ChatService | None = None
+
+
+def _get_regression_chat_service() -> ChatService:
+    global _regression_chat_service
+    if _regression_chat_service is None:
+        settings = get_settings()
+        provider = get_llm_provider(settings.llm_provider, settings.llm_api_key, settings.llm_model)
+        _regression_chat_service = ChatService(
+            get_retriever(),
+            provider,
+            top_k=settings.top_k,
+            model_provider=settings.llm_provider,
+            model_name=settings.llm_model,
+            trace_logger=TraceLogger(_REGRESSION_TRACES_PATH),
+        )
+    return _regression_chat_service
 
 
 @dataclass
@@ -71,7 +102,7 @@ def _check_regression(case: RegressionCase, answer: str, citations: list[str]) -
 
 
 def run_regression_case(case: RegressionCase) -> RegressionRun:
-    chat_service = get_chat_service()
+    chat_service = _get_regression_chat_service()
     response = chat_service.answer(case.question, strategy="structure-aware")
     passed, detail = _check_regression(case, response.answer, response.citations and [c.chunk_id for c in response.citations])
     return RegressionRun(case=case, answer=response.answer, citations=[c.chunk_id for c in response.citations], passed=passed, detail=detail)
